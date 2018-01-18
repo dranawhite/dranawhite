@@ -19,4 +19,146 @@
         <module>dranawhite-ui</module>
     </modules>
 
+    <properties>
+        <!-- 编译版本号 -->
+        <encoding>UTF-8</encoding>
+        <source.version>1.7</source.version>
+        <target.version>1.7</target.version>
+    </properties>
+
+    <build>
+        <finalName>dranawhite</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <pluginManagement>
+            <plugins>
+                <!-- 编译插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <!-- 编译时生成所有调试信息 -->
+                                <compilerArgs>
+                                    <arg>-g</arg>
+                                </compilerArgs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- 资源插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!-- Jar打包插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <!-- 去除Maven自动生成的.MF文件;避免SPI时覆盖 -->
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <!-- War打包插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+                <!-- 打包套件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- Tomcat插件 -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <!-- Tomcat端口号 -->
+                        <port>8080</port>
+                        <!-- URL按照UTF-8进行编码 -->
+                        <uriEncoding>UTF-8</uriEncoding>
+                        <!-- setting.xml中配置的Server ID -->
+                        <server>TomcatServer</server>
+                        <contextFile>
+                            ${project.build.outputDirectory}/tomcat/tomcat-context.xml
+                        </contextFile>
+                    </configuration>
+                </plugin>
+                <!-- Jetty插件 -->
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>6.1.25</version>
+                    <configuration>
+                        <connectors>
+                            <connector
+                                    implementation = "org.mortbay.jetty.nio.SelectChannelConnector">
+                                <port>8080</port>
+                                <maxIdleTime>600000</maxIdleTime>
+                            </connector>
+                        </connectors>
+                        <!-- 在设置间隔秒检查Web应用是否有变化。默认为0，表示禁用热部署 -->
+                        <scanIntervalSeconds>3</scanIntervalSeconds>
+                        <jettyEnvXml>${project.build.outputDirectory}/jetty/jetty-env.xml
+                        </jettyEnvXml>
+                        <reload>automatic</reload>
+                    </configuration>
+                </plugin>
+                <!-- 单元测试插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20.1</version>
+                    <!-- 开启10个线程并发运行单元测试 -->
+                    <configuration>
+                        <parallel>classesAndMethods</parallel>
+                        <threadCount>10</threadCount>
+                    </configuration>
+                </plugin>
+                <!-- MyBatis Generator -->
+                <plugin>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>1.3.5</version>
+                    <configuration>
+                        <configurationFile>
+                            ${project.basedir}/src/main/resources/mybatis/mybatis-generator.xml
+                        </configurationFile>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
