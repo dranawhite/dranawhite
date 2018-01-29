@@ -41,7 +41,7 @@ import java.util.Set;
  *      email:                       类创建者邮箱，默认不生成，若suppressAllComments设置为true，则忽略该字段
  *      fromYear:                    起始年份，若suppressAllComments设置为true，则忽略该字段
  *      toYear:                      截止年份，若suppressAllComments设置为true，则忽略该字段
- *      compangy:                    公司名，若suppressAllComments设置为true，则忽略该字段
+ *      company:                     公司名，若suppressAllComments设置为true，则忽略该字段
  * </pre>
  *
  * @author dranawhite 2018/1/26
@@ -247,6 +247,10 @@ public class DbCommentGenerator implements CommentGenerator {
 
     @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
+        if (suppressAllComments || suppressCopyRight) {
+            return;
+        }
+
         reader.setVmPath(VelocityConstants.DEFAULT_COPYRIGHT_PATH);
         Writer writer = reader
                 .putVariables(assembleCopyrightVariable(compilationUnit.getType().getShortName())
