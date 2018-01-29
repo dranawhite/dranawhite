@@ -15,6 +15,9 @@ public class DbPropertyRegistry extends PropertyRegistry {
 
     public static final String COMMENT_GENERATOR_SUPPRESS_MODEL_ALIAS = "modelAlias";
 
-    public static final String COMMENT_GENERATOR_VM_PATH = "vmPath";
+    public static final String COMMENT_GENERATOR_COMPANY = "company";
 
+    public static final String COMMENT_GENERATOR_FROM_YEAR = "fromYear";
+
+    public static final String COMMENT_GENERATOR_TO_YEAR = "toYear";
 }

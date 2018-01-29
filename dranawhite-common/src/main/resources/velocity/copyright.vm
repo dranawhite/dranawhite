@@ -1,5 +1,5 @@
 /*
- * Copyright (C), 2015-2018, www.dranawhite.com
+ * Copyright (C), ${fromYear}-${toYear}, ${company}
  * FileName:     $!{fileName}
  * Author:       $!{author} $!{email}
  * Date:         $!{curTime}

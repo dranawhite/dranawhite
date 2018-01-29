@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,10 @@ import java.util.Properties;
  *      addRemarkComments:           添加表备注作为注释，默认值false，若suppressAllComments设置为true，则忽略该字段
  *      author:                      类文件创建者，默认不生成，若suppressAllComments设置为true，则忽略该字段
  *      version:                     类文件版本，默认不生成，若suppressAllComments设置为true，则忽略该字段
+ *      email:                       类创建者邮箱，默认不生成，若suppressAllComments设置为true，则忽略该字段
+ *      fromYear:                    起始年份，若suppressAllComments设置为true，则忽略该字段
+ *      toYear:                      截止年份，若suppressAllComments设置为true，则忽略该字段
+ *      compangy:                    公司名，若suppressAllComments设置为true，则忽略该字段
  * </pre>
  *
  * @author dranawhite 2018/1/26
@@ -79,9 +84,19 @@ public class DbCommentGenerator implements CommentGenerator {
     private String version;
 
     /**
-     * copyright路径
+     * 起始年份
      */
-    private String vmPath;
+    private String fromYear;
+
+    /**
+     * 截止年份
+     */
+    private String toYear;
+
+    /**
+     * 公司
+     */
+    private String company;
 
     /**
      * 是否生成@Alias注解
@@ -93,15 +108,7 @@ public class DbCommentGenerator implements CommentGenerator {
     public DbCommentGenerator() throws IOException {
         super();
         properties = new Properties();
-        suppressDate = false;
-        suppressAllComments = false;
-        addRemarkComments = false;
-        author = null;
-        email = null;
-        version = null;
-        vmPath = null;
         suppressModelAlias = true;
-
         reader = new VelocityReader();
         reader.init();
     }
@@ -120,7 +127,9 @@ public class DbCommentGenerator implements CommentGenerator {
         author = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_AUTHOR);
         email = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_EMAIL);
         version = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_VERSION);
-        vmPath = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_VM_PATH);
+        fromYear = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_FROM_YEAR);
+        toYear = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_TO_YEAR);
+        company = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_COMPANY);
         String dateFormatString =
                 properties.getProperty(PropertyRegistry.COMMENT_GENERATOR_DATE_FORMAT);
         if (StringUtility.stringHasValue(dateFormatString)) {
@@ -160,11 +169,7 @@ public class DbCommentGenerator implements CommentGenerator {
         }
 
         String remark = introspectedTable.getRemarks();
-        if (vmPath != null) {
-            reader.setVmPath(vmPath + "/class.vm");
-        } else {
-            reader.setVmPath(VelocityConstants.DEFAULT_CLASS_PATH);
-        }
+        reader.setVmPath(VelocityConstants.DEFAULT_CLASS_PATH);
         Writer writer = reader
                 .putVariables(assembleClassVariable(remark), VelocityConstants.DEFAULT_CLASS_PATH);
         topLevelClass.addJavaDocLine(writer.toString());
@@ -198,11 +203,7 @@ public class DbCommentGenerator implements CommentGenerator {
             return;
         }
 
-        if (vmPath != null) {
-            reader.setVmPath(vmPath + "/getter.vm");
-        } else {
-            reader.setVmPath(VelocityConstants.DEFAULT_GETTER_PATH);
-        }
+        reader.setVmPath(VelocityConstants.DEFAULT_GETTER_PATH);
         String methodName = method.getName();
         char[] methodNameChs = methodName.toCharArray();
         methodNameChs[3] = (char) (methodNameChs[3] + 32);
@@ -220,11 +221,7 @@ public class DbCommentGenerator implements CommentGenerator {
             return;
         }
 
-        if (vmPath != null) {
-            reader.setVmPath(vmPath + "/setter.vm");
-        } else {
-            reader.setVmPath(VelocityConstants.DEFAULT_SETTER_PATH);
-        }
+        reader.setVmPath(VelocityConstants.DEFAULT_SETTER_PATH);
         Writer writer = reader
                 .putVariables(assembleSetOrGetVariable(method.getParameters().get(0).getName()),
                         VelocityConstants.DEFAULT_SETTER_PATH);
@@ -238,11 +235,7 @@ public class DbCommentGenerator implements CommentGenerator {
 
     @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
-        if (vmPath != null) {
-            reader.setVmPath(vmPath + "/copyright.vm");
-        } else {
-            reader.setVmPath(VelocityConstants.DEFAULT_COPYRIGHT_PATH);
-        }
+        reader.setVmPath(VelocityConstants.DEFAULT_COPYRIGHT_PATH);
         Writer writer = reader
                 .putVariables(assembleCopyrightVariable(compilationUnit.getType().getShortName())
                         , VelocityConstants.DEFAULT_COPYRIGHT_PATH);
@@ -269,6 +262,13 @@ public class DbCommentGenerator implements CommentGenerator {
         }
         if (version != null) {
             variableMap.put("version", version);
+        }
+        if (company != null) {
+            variableMap.put("company", company);
+        }
+        if (fromYear != null && toYear != null) {
+            variableMap.put("fromYear", fromYear);
+            variableMap.put("toYear", toYear);
         }
         variableMap.put("fileName", fileName);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

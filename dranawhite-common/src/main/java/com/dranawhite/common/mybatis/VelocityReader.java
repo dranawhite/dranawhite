@@ -42,13 +42,7 @@ public class VelocityReader {
     }
 
     Writer putVariables(Map<String, String> variableMap, String defaultPath) {
-        Template tpl;
-        try {
-            tpl = vmEngine.getTemplate(vmPath);
-        } catch (ResourceNotFoundException e) {
-            tpl = vmEngine.getTemplate(defaultPath);
-        }
-
+        Template tpl = getTemplate(defaultPath);
         VelocityContext ctx = new VelocityContext();
         for(Map.Entry<String, String> entry : variableMap.entrySet()) {
             ctx.put(entry.getKey(), entry.getValue());
@@ -56,6 +50,14 @@ public class VelocityReader {
         StringWriter writer = new StringWriter();
         tpl.merge(ctx, writer);
         return writer;
+    }
+
+    private Template getTemplate(String defaultPath) {
+        try {
+            return vmEngine.getTemplate(vmPath);
+        } catch (ResourceNotFoundException e) {
+            return vmEngine.getTemplate(defaultPath);
+        }
     }
 
 }
