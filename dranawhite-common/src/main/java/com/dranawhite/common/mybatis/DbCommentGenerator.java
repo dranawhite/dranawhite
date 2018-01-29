@@ -16,6 +16,7 @@ import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.util.StringUtility;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * 根据数据库备注生成实体注释
@@ -115,6 +117,8 @@ public class DbCommentGenerator implements CommentGenerator {
 
     @Override
     public void addConfigurationProperties(Properties properties) {
+        transferEncoding(properties);
+        System.out.println(properties);
         this.properties.putAll(properties);
         suppressDate = isTrue(properties
                 .getProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE));
@@ -299,5 +303,17 @@ public class DbCommentGenerator implements CommentGenerator {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         variableMap.put("curTime", sdf.format(new Date()));
         return variableMap;
+    }
+
+    private void transferEncoding(Properties prop) {
+        try {
+            for (Map.Entry<Object, Object> entry : prop.entrySet()) {
+                String value = (String) entry.getValue();
+                String newValue = new String(value.getBytes(), "UTF-8");
+                prop.put(entry.getKey(), newValue);
+            }
+        } catch(UnsupportedEncodingException e) {
+            System.out.println(e);
+        }
     }
 }
