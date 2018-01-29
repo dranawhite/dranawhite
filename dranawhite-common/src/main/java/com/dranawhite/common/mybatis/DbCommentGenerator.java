@@ -10,7 +10,6 @@ import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.api.dom.java.InnerEnum;
 import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.Parameter;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.PropertyRegistry;
@@ -22,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -161,38 +159,14 @@ public class DbCommentGenerator implements CommentGenerator {
             return;
         }
 
-        topLevelClass.addJavaDocLine("/**");
         String remark = introspectedTable.getRemarks();
-        if (remark != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(" * ").append(remark);
-            topLevelClass.addJavaDocLine(sb.toString());
+        if (vmPath != null) {
+            reader.setVmPath(vmPath + "/class.vm");
+        } else {
+            reader.setVmPath("velocity/class.vm");
         }
-        if (author != null && email != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(" * @author ").append(author).append(" ").append(email);
-            topLevelClass.addJavaDocLine(sb.toString());
-        } else if (author != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(" * @author ").append(author);
-            topLevelClass.addJavaDocLine(sb.toString());
-        } else if (email != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(" * @author ").append(email);
-            topLevelClass.addJavaDocLine(sb.toString());
-        }
-
-
-        if (version != null) {
-            StringBuilder sb = new StringBuilder();
-            Date curTime = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String curFormattedTime = sdf.format(curTime);
-            sb.append(" * @version [V").append(version).append(", ").append(curFormattedTime)
-                    .append("]");
-            topLevelClass.addJavaDocLine(sb.toString());
-        }
-        topLevelClass.addJavaDocLine(" */");
+        Writer writer = reader.putVariables(assembleClassVariable(remark));
+        topLevelClass.addJavaDocLine(writer.toString());
         if (!suppressModelAlias) {
             String annotation = "@Alias(\"" + topLevelClass.getType().getShortName() + "\")";
             topLevelClass.addAnnotation(annotation);
@@ -267,7 +241,7 @@ public class DbCommentGenerator implements CommentGenerator {
             reader.setVmPath("velocity/copyright.vm");
         }
         Writer writer = reader
-                .putVariables(assembleCopyrightVariables(compilationUnit.getType().getShortName()));
+                .putVariables(assembleCopyrightVariable(compilationUnit.getType().getShortName()));
         compilationUnit.addFileCommentLine(writer.toString());
     }
 
@@ -281,7 +255,7 @@ public class DbCommentGenerator implements CommentGenerator {
         // Do Nothing
     }
 
-    private Map<String, String> assembleCopyrightVariables(String fileName) {
+    private Map<String, String> assembleCopyrightVariable(String fileName) {
         Map<String, String> variableMap = new HashMap<>(16);
         if (author != null) {
             variableMap.put("author", author);
@@ -293,7 +267,7 @@ public class DbCommentGenerator implements CommentGenerator {
             variableMap.put("version", version);
         }
         variableMap.put("fileName", fileName);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         variableMap.put("curTime", sdf.format(new Date()));
         return variableMap;
     }
@@ -301,6 +275,25 @@ public class DbCommentGenerator implements CommentGenerator {
     private Map<String, String> assembleSetOrGetVariable(String fieldName) {
         Map<String, String> variableMap = new HashMap<>(1);
         variableMap.put("param", fieldName);
+        return variableMap;
+    }
+
+    private Map<String, String> assembleClassVariable(String remark) {
+        Map<String, String> variableMap = new HashMap<>(1);
+        if (remark != null) {
+            variableMap.put("remark", remark);
+        }
+        if (author != null) {
+            variableMap.put("author", author);
+        }
+        if (email != null) {
+            variableMap.put("email", email);
+        }
+        if (version != null) {
+            variableMap.put("version", version);
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        variableMap.put("curTime", sdf.format(new Date()));
         return variableMap;
     }
 }
