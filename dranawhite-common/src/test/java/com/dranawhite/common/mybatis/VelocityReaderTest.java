@@ -23,7 +23,7 @@ public class VelocityReaderTest {
         reader.setVmPath("velocity/setter.vm");
         Map<String, String> map = new HashMap<>(1);
         map.put("param", "param");
-        Writer writer = reader.putVariables(map);
+        Writer writer = reader.putVariables(map, VelocityConstants.DEFAULT_SETTER_PATH);
         Assert.assertNotNull(writer.toString());
     }
 

@@ -155,7 +155,7 @@ public class DbCommentGenerator implements CommentGenerator {
     @Override
     public void addModelClassComment(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
-        if (suppressAllComments  || !addRemarkComments) {
+        if (suppressAllComments || !addRemarkComments) {
             return;
         }
 
@@ -163,9 +163,10 @@ public class DbCommentGenerator implements CommentGenerator {
         if (vmPath != null) {
             reader.setVmPath(vmPath + "/class.vm");
         } else {
-            reader.setVmPath("velocity/class.vm");
+            reader.setVmPath(VelocityConstants.DEFAULT_CLASS_PATH);
         }
-        Writer writer = reader.putVariables(assembleClassVariable(remark));
+        Writer writer = reader
+                .putVariables(assembleClassVariable(remark), VelocityConstants.DEFAULT_CLASS_PATH);
         topLevelClass.addJavaDocLine(writer.toString());
         if (!suppressModelAlias) {
             String annotation = "@Alias(\"" + topLevelClass.getType().getShortName() + "\")";
@@ -200,14 +201,15 @@ public class DbCommentGenerator implements CommentGenerator {
         if (vmPath != null) {
             reader.setVmPath(vmPath + "/getter.vm");
         } else {
-            reader.setVmPath("velocity/getter.vm");
+            reader.setVmPath(VelocityConstants.DEFAULT_GETTER_PATH);
         }
         String methodName = method.getName();
         char[] methodNameChs = methodName.toCharArray();
         methodNameChs[3] = (char) (methodNameChs[3] + 32);
         char[] fieldNameChs = Arrays.copyOfRange(methodNameChs, 3, methodNameChs.length);
         Writer writer = reader
-                .putVariables(assembleSetOrGetVariable(new String(fieldNameChs)));
+                .putVariables(assembleSetOrGetVariable(new String(fieldNameChs)),
+                        VelocityConstants.DEFAULT_GETTER_PATH);
         method.addJavaDocLine(writer.toString());
     }
 
@@ -221,10 +223,11 @@ public class DbCommentGenerator implements CommentGenerator {
         if (vmPath != null) {
             reader.setVmPath(vmPath + "/setter.vm");
         } else {
-            reader.setVmPath("velocity/setter.vm");
+            reader.setVmPath(VelocityConstants.DEFAULT_SETTER_PATH);
         }
         Writer writer = reader
-                .putVariables(assembleSetOrGetVariable(method.getParameters().get(0).getName()));
+                .putVariables(assembleSetOrGetVariable(method.getParameters().get(0).getName()),
+                        VelocityConstants.DEFAULT_SETTER_PATH);
         method.addJavaDocLine(writer.toString());
     }
 
@@ -238,10 +241,11 @@ public class DbCommentGenerator implements CommentGenerator {
         if (vmPath != null) {
             reader.setVmPath(vmPath + "/copyright.vm");
         } else {
-            reader.setVmPath("velocity/copyright.vm");
+            reader.setVmPath(VelocityConstants.DEFAULT_COPYRIGHT_PATH);
         }
         Writer writer = reader
-                .putVariables(assembleCopyrightVariable(compilationUnit.getType().getShortName()));
+                .putVariables(assembleCopyrightVariable(compilationUnit.getType().getShortName())
+                        , VelocityConstants.DEFAULT_COPYRIGHT_PATH);
         compilationUnit.addFileCommentLine(writer.toString());
     }
 

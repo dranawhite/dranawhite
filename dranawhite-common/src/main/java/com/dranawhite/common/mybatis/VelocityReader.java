@@ -3,6 +3,7 @@ package com.dranawhite.common.mybatis;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import java.io.IOException;
@@ -40,8 +41,14 @@ public class VelocityReader {
         this.vmPath = vmPath;
     }
 
-    Writer putVariables(Map<String, String> variableMap) {
-        Template tpl = vmEngine.getTemplate(vmPath);
+    Writer putVariables(Map<String, String> variableMap, String defaultPath) {
+        Template tpl;
+        try {
+            tpl = vmEngine.getTemplate(vmPath);
+        } catch (ResourceNotFoundException e) {
+            tpl = vmEngine.getTemplate(defaultPath);
+        }
+
         VelocityContext ctx = new VelocityContext();
         for(Map.Entry<String, String> entry : variableMap.entrySet()) {
             ctx.put(entry.getKey(), entry.getValue());
