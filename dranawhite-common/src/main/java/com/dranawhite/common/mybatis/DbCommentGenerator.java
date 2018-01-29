@@ -34,6 +34,7 @@ import java.util.Set;
  *      suppressDate：               取消生成日期注释，默认值false
  *      suppressAllComments:         取消生成所有注释，默认值false
  *      suppressModelAlias:          取消生成Model类@Alias注解，默认值为true
+ *      suppressCopyRight:           取消生成类的CopyRight,默认值为true
  *      addRemarkComments:           添加表备注作为注释，默认值false，若suppressAllComments设置为true，则忽略该字段
  *      author:                      类文件创建者，默认不生成，若suppressAllComments设置为true，则忽略该字段
  *      version:                     类文件版本，默认不生成，若suppressAllComments设置为true，则忽略该字段
@@ -61,6 +62,11 @@ public class DbCommentGenerator implements CommentGenerator {
      * 是否生成所有注释
      */
     private boolean suppressAllComments;
+
+    /**
+     * 取消生成CopyRight
+     */
+    private boolean suppressCopyRight;
 
     /**
      * 添加备注作为注释
@@ -111,6 +117,7 @@ public class DbCommentGenerator implements CommentGenerator {
         super();
         properties = new Properties();
         suppressModelAlias = true;
+        suppressCopyRight = true;
         reader = new VelocityReader();
         reader.init();
     }
@@ -118,7 +125,6 @@ public class DbCommentGenerator implements CommentGenerator {
     @Override
     public void addConfigurationProperties(Properties properties) {
         transferEncoding(properties);
-        System.out.println(properties);
         this.properties.putAll(properties);
         suppressDate = isTrue(properties
                 .getProperty(PropertyRegistry.COMMENT_GENERATOR_SUPPRESS_DATE));
@@ -128,6 +134,8 @@ public class DbCommentGenerator implements CommentGenerator {
                 .getProperty(PropertyRegistry.COMMENT_GENERATOR_ADD_REMARK_COMMENTS));
         suppressModelAlias = isTrue(properties
                 .getProperty(DbPropertyRegistry.COMMENT_GENERATOR_SUPPRESS_MODEL_ALIAS));
+        suppressCopyRight = isTrue(properties
+                .getProperty(DbPropertyRegistry.COMMENT_GENERATOR_SUPPRESS_COPY_RIGHT));
         author = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_AUTHOR);
         email = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_EMAIL);
         version = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_VERSION);
