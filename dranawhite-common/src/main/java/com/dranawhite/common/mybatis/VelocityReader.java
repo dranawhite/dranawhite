@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -31,7 +30,8 @@ public class VelocityReader {
 
     void init() throws IOException {
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
-        InputStream propIns = resourceLoader.getResourceStream("velocity/velocity.properties");
+        InputStream propIns = resourceLoader.getResourceStream(
+                "mybatis_velocity/velocity.properties");
         Properties props = new Properties();
         props.load(propIns);
         vmEngine.init(props);

@@ -20,7 +20,7 @@ public class VelocityReaderTest {
     public void testSetter() throws IOException {
         VelocityReader reader = new VelocityReader();
         reader.init();
-        reader.setVmPath("velocity/setter.vm");
+        reader.setVmPath("mybatis_velocity/setter.vm");
         Map<String, String> map = new HashMap<>(1);
         map.put("param", "param");
         Writer writer = reader.putVariables(map, VelocityConstants.DEFAULT_SETTER_PATH);
@@ -31,7 +31,7 @@ public class VelocityReaderTest {
     public void testCopyright() throws IOException {
         VelocityReader reader = new VelocityReader();
         reader.init();
-        reader.setVmPath("velocity/copyright.vm");
+        reader.setVmPath("mybatis_velocity/copyright.vm");
         Map<String, String> map = new HashMap<>(1);
         map.put("company", "上海米么");
         Writer writer = reader.putVariables(map, VelocityConstants.DEFAULT_COPYRIGHT_PATH);
