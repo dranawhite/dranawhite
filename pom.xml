@@ -401,6 +401,9 @@
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.vm</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.xlsx</include>
+                    <include>**/*.xls</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
