@@ -16,7 +16,6 @@
     <modules>
         <module>dranawhite-api</module>
         <module>dranawhite-common</module>
-        <module>dranawhite-ui</module>
     </modules>
 
     <properties>
