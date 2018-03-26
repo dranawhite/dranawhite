@@ -7,11 +7,13 @@ package com.dranawhite.common.mybatis;
  */
 public final class VelocityConstants {
 
-    public static final String DEFAULT_COPYRIGHT_PATH = "copyright.vm";
+    private static final String PREFIX = "velocity";
 
-    public static final String DEFAULT_SETTER_PATH = "setter.vm";
+    public static final String DEFAULT_COPYRIGHT_PATH = PREFIX + "copyright.vm";
 
-    public static final String DEFAULT_GETTER_PATH = "getter.vm";
+    public static final String DEFAULT_SETTER_PATH = PREFIX + "setter.vm";
 
-    public static final String DEFAULT_CLASS_PATH = "class.vm";
+    public static final String DEFAULT_GETTER_PATH = PREFIX + "getter.vm";
+
+    public static final String DEFAULT_CLASS_PATH = PREFIX + "class.vm";
 }

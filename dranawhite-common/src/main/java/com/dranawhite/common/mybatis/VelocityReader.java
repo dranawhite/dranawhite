@@ -31,7 +31,7 @@ public class VelocityReader {
     void init() throws IOException {
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
         InputStream propIns = resourceLoader.getResourceStream(
-                "mybatis_velocity/velocity.properties");
+                "velocity/velocity.properties");
         Properties props = new Properties();
         props.load(propIns);
         vmEngine.init(props);
