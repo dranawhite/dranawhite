@@ -20,12 +20,10 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 /**
  * 根据数据库备注生成实体注释
@@ -44,7 +42,7 @@ import java.util.Set;
  *      company:                     公司名，若suppressAllComments设置为true，则忽略该字段
  * </pre>
  *
- * @author dranawhite 2018/1/26
+ * @author liangyq 2018/1/26
  */
 public class DbCommentGenerator implements CommentGenerator {
 
@@ -111,6 +109,11 @@ public class DbCommentGenerator implements CommentGenerator {
      */
     private boolean suppressModelAlias;
 
+    /**
+     * 添加生成@Data注解
+     */
+    private boolean addLombokData;
+
     private VelocityReader reader;
 
     public DbCommentGenerator() throws IOException {
@@ -136,6 +139,8 @@ public class DbCommentGenerator implements CommentGenerator {
                 .getProperty(DbPropertyRegistry.COMMENT_GENERATOR_SUPPRESS_MODEL_ALIAS));
         suppressCopyRight = isTrue(properties
                 .getProperty(DbPropertyRegistry.COMMENT_GENERATOR_SUPPRESS_COPY_RIGHT));
+        addLombokData = isTrue(properties.getProperty(DbPropertyRegistry
+                .COMMENT_GENERATOR_ADD_LOMBOK_DATA));
         author = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_AUTHOR);
         email = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_EMAIL);
         version = properties.getProperty(DbPropertyRegistry.COMMENT_GENERATOR_VERSION);
@@ -189,6 +194,10 @@ public class DbCommentGenerator implements CommentGenerator {
             String annotation = "@Alias(\"" + topLevelClass.getType().getShortName() + "\")";
             topLevelClass.addAnnotation(annotation);
             topLevelClass.addImportedType("org.apache.ibatis.type.Alias");
+        }
+        if (addLombokData) {
+            topLevelClass.addAnnotation("@Data");
+            topLevelClass.addImportedType("lombok.Data");
         }
     }
 
