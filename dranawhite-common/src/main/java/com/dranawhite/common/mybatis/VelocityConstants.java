@@ -7,7 +7,7 @@ package com.dranawhite.common.mybatis;
  */
 public final class VelocityConstants {
 
-    private static final String PREFIX = "velocity";
+    private static final String PREFIX = "velocity/";
 
     public static final String DEFAULT_COPYRIGHT_PATH = PREFIX + "copyright.vm";
 
