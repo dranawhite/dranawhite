@@ -20,6 +20,7 @@
         <!-- 4.1版本，适用于JDK 1.6+ -->
         <commons-collection4.version>4.1</commons-collection4.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <jota-time.version>2.7</jota-time.version>
     </properties>
 
     <dependencies>
@@ -46,6 +47,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collection4.version}</version>
+        </dependency>
+
+        <!-- Date Util -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${jota-time.version}</version>
         </dependency>
     </dependencies>
 
