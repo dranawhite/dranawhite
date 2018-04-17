@@ -5,12 +5,11 @@
     <parent>
         <artifactId>dranawhite</artifactId>
         <groupId>com.dranawhite</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dranawhite-config</artifactId>
-
     <description>公用配置项</description>
 
     <properties>
@@ -25,6 +24,7 @@
             <version>${disconf.version}</version>
         </dependency>
 
+        <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -44,13 +44,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <!-- Unit Test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

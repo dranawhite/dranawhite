@@ -5,15 +5,26 @@
     <parent>
         <artifactId>dranawhite</artifactId>
         <groupId>com.dranawhite</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>dranawhite-dal</artifactId>
+    <description>数据服务模块</description>
 
     <properties>
+        <!-- Mybatis逆向工程 -->
         <mybatis-generator.version>1.3.5</mybatis-generator.version>
         <velocity.version>1.7</velocity.version>
+        <!-- Database -->
+        <!-- 8.0版本，适用于MySql 5.5,5.6,5.7,8.0; JDK 1.8+; JDBC 4.2 -->
+        <mysql.version>8.0.8-dmr</mysql.version>
+        <derby.version>10.13.1.1</derby.version>
+        <oracle.version>6</oracle.version>
+        <druid.version>1.1.6</druid.version>
+        <!-- ORM -->
+        <!-- 1.3.1版本，适用于MyBatis 3.4.0+; Spring 3.0.0+ -->
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis.version>3.4.5</mybatis.version>
     </properties>
 
     <dependencies>
@@ -29,9 +40,59 @@
             <version>${velocity.version}</version>
         </dependency>
 
+        <!-- Database -->
+        <!-- Derby -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>${derby.version}</version>
+        </dependency>
+        <!-- Oracle -->
+        <dependency>
+            <groupId>ojdbc</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>${oracle.version}</version>
+        </dependency>
+        <!-- MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- ORM -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+
+        <!-- Druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- MyBatis Generator -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <configurationFile>
+                        ${project.basedir}/src/main/resources/mybatis/mybatis-generator.xml
+                    </configurationFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

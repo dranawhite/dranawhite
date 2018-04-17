@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.common.mybatis.comment;
 
 import org.mybatis.generator.config.PropertyRegistry;
 

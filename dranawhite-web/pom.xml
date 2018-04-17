@@ -5,11 +5,100 @@
     <parent>
         <artifactId>dranawhite</artifactId>
         <groupId>com.dranawhite</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dranawhite-web</artifactId>
+    <description>Web服务模块</description>
 
+    <properties>
+        <!-- J2EE -->
+        <!-- 3.1版本，适用于J2EE 7.0 -->
+        <servlet.version>3.1.0</servlet.version>
+        <jsp.version>2.3.1</jsp.version>
+        <jstl.version>1.2</jstl.version>
+        <fastjson.version>1.2.28</fastjson.version>
+    </properties>
 
+    <dependencies>
+        <!-- J2EE -->
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSP -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Jstl -->
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>${jstl.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet.jsp</groupId>
+                    <artifactId>jsp-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Tomcat插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- Tomcat端口号 -->
+                    <port>8080</port>
+                    <!-- URL按照UTF-8进行编码 -->
+                    <uriEncoding>${encoding}</uriEncoding>
+                    <!-- setting.xml中配置的Server ID -->
+                    <server>TomcatServer</server>
+                    <contextFile>
+                        ${project.build.outputDirectory}/tomcat/tomcat-context.xml
+                    </contextFile>
+                </configuration>
+            </plugin>
+            <!-- Jetty插件 -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
+                <configuration>
+                    <connectors>
+                        <connector
+                                implementation = "org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>600000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                    <!-- 在设置间隔秒检查Web应用是否有变化。默认为0，表示禁用热部署 -->
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <jettyEnvXml>${project.build.outputDirectory}/jetty/jetty-env.xml</jettyEnvXml>
+                    <reload>automatic</reload>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

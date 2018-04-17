@@ -7,7 +7,7 @@
     <groupId>com.dranawhite</groupId>
     <artifactId>dranawhite</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>dranawhite</name>
     <description>dranawhite项目为子项目提供基本功能支持</description>
@@ -16,398 +16,76 @@
     <modules>
         <module>dranawhite-api</module>
         <module>dranawhite-common</module>
+        <module>dranawhite-ui</module>
+        <module>dranawhite-log</module>
+        <module>dranawhite-exception</module>
         <module>dranawhite-config</module>
         <module>dranawhite-dal</module>
+        <module>dranawhite-tx</module>
+        <module>dranawhite-cache</module>
+        <module>dranawhite-office</module>
         <module>dranawhite-job</module>
         <module>dranawhite-mq</module>
         <module>dranawhite-distributed</module>
+        <module>dranawhite-interceptor</module>
+        <module>dranawhite-event</module>
         <module>dranawhite-core</module>
         <module>dranawhite-web</module>
-        <module>dranawhite-tx</module>
-        <module>dranawhite-ui</module>
-        <module>dranawhite-log</module>
-        <module>dranawhite-cache</module>
-        <module>dranawhite-exception</module>
-        <module>dranawhite-event</module>
-        <module>dranawhite-interceptor</module>
-        <module>dranawhite-office</module>
     </modules>
 
     <properties>
         <!-- 编译版本号 -->
         <encoding>UTF-8</encoding>
-        <source.version>1.7</source.version>
-        <target.version>1.7</target.version>
-        <!-- Apache Commons -->
-        <!-- 3.7版本，适用于JDK 1.7+ -->
-        <commons-lang3.version>3.7</commons-lang3.version>
-        <!-- 1.9.3版本，适用于JDK 1.5+ -->
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <!-- 4.1版本，适用于JDK 1.6+ -->
-        <commons-collection4.version>4.1</commons-collection4.version>
-        <commons-codec.version>1.11</commons-codec.version>
+        <jdk.version>1.8</jdk.version>
+        <lombok.version>1.16.20</lombok.version>
         <!-- Spring  -->
-        <spring.version>4.3.13.RELEASE</spring.version>
-        <!-- Database -->
-        <!-- 8.0版本，适用于MySql 5.5,5.6,5.7,8.0; JDK 1.8+; JDBC 4.2 -->
-        <mysql.version>8.0.8-dmr</mysql.version>
-        <derby.version>10.13.1.1</derby.version>
-        <oracle.version>6</oracle.version>
-        <druid.version>1.1.6</druid.version>
-        <!-- J2EE -->
-        <!-- 3.1版本，适用于J2EE 7.0 -->
-        <servlet.version>3.1.0</servlet.version>
-        <jsp.version>2.3.1</jsp.version>
-        <jstl.version>1.2</jstl.version>
-        <fastjson.version>1.2.28</fastjson.version>
-        <!-- Logging -->
-        <!-- 1.7.25版本，适用于JDK 1.7+ -->
-        <slf4j.version>1.7.25</slf4j.version>
-        <slf4j-log4j.version>1.7.7</slf4j-log4j.version>
-        <log4j1.version>1.2.17</log4j1.version>
-        <logback.version>1.2.3</logback.version>
-        <!-- Test -->
-        <!-- 4.12版本，适用于JDK 1.7+-->
-        <junit.version>4.12</junit.version>
-        <powermock.version>1.6.5</powermock.version>
-        <unitils.version>3.4.6</unitils.version>
-        <dbunit.version>2.5.4</dbunit.version>
-        <!-- ORM -->
-        <!-- 1.3.1版本，适用于MyBatis 3.4.0+; Spring 3.0.0+ -->
-        <mybatis-spring.version>1.3.1</mybatis-spring.version>
-        <mybatis.version>3.4.5</mybatis.version>
+        <spring.version>5.0.4.RELEASE</spring.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Apache Commons -->
-            <!-- Apache Commons Beanutils -->
+            <!-- Lombok -->
             <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>${commons-beanutils.version}</version>
-            </dependency>
-            <!-- Apache Commons Lang3 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>${commons-codec.version}</version>
-            </dependency>
-            <!-- Apache Commons Collections4 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-collections4</artifactId>
-                <version>${commons-collection4.version}</version>
-                <scope>compile</scope>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
 
             <!-- Spring Framework -->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
+                <artifactId>spring-framework-bom</artifactId>
                 <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-                <scope>compile</scope>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
-            <!-- Test -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
+            <!-- Unit Test -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- Mock测试 -->
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- 集成测试 -->
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-core</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-test</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-spring</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-core</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-context</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-beans</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-test</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>spring-tx</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-mock</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-io</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-orm</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-database</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-dbmaintainer</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- 使用DbUnit来管理测试数据，DbUnit是一个数据库单元测试工具 -->
-            <dependency>
-                <groupId>org.unitils</groupId>
-                <artifactId>unitils-dbunit</artifactId>
-                <version>${unitils.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.dbunit</groupId>
-                        <artifactId>dbunit</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.dbunit</groupId>
-                <artifactId>dbunit</artifactId>
-                <version>${dbunit.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-nop</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <!-- Logging -->
-            <!-- SLF4J -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- slf4j-log4j1 -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j-log4j.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j1.version}</version>
-            </dependency>
-            <!-- logback -->
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-                <scope>compile</scope>
-            </dependency>
-
-            <!-- Database -->
-            <!-- Derby -->
-            <dependency>
-                <groupId>org.apache.derby</groupId>
-                <artifactId>derby</artifactId>
-                <version>${derby.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <!-- Oracle -->
-            <dependency>
-                <groupId>ojdbc</groupId>
-                <artifactId>ojdbc</artifactId>
-                <version>${oracle.version}</version>
-            </dependency>
-            <!-- MySql -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-
-            <!-- ORM -->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-spring</artifactId>
-                <version>${mybatis-spring.version}</version>
-            </dependency>
-
-            <!-- Druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-
-            <!-- J2EE -->
-            <!-- Servlet -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- JSP -->
-            <dependency>
-                <groupId>javax.servlet.jsp</groupId>
-                <artifactId>javax.servlet.jsp-api</artifactId>
-                <version>${jsp.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- Jstl -->
-            <dependency>
-                <groupId>javax.servlet.jsp.jstl</groupId>
-                <artifactId>jstl-api</artifactId>
-                <version>${jstl.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.servlet</groupId>
-                        <artifactId>servlet-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.servlet.jsp</groupId>
-                        <artifactId>jsp-api</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-                <scope>compile</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- Unit Test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>dranawhite</finalName>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -454,10 +132,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.3</version>
+                    <version>3.7.0</version>
                     <configuration>
-                        <source>${source.version}</source>
-                        <target>${target.version}</target>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
                         <encoding>${encoding}</encoding>
                     </configuration>
                     <executions>
@@ -479,7 +157,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.0.2</version>
                     <configuration>
                         <encoding>${encoding}</encoding>
                     </configuration>
@@ -488,6 +166,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
                     <configuration>
                         <archive>
                             <!-- 去除Maven自动生成的.MF文件;避免SPI时覆盖 -->
@@ -499,50 +178,24 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.2</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <!-- 打包套件 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.1.0</version>
                 </plugin>
-                <!-- Tomcat插件 -->
+                <!-- 发布插件 -->
                 <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.2</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
                     <configuration>
-                        <!-- Tomcat端口号 -->
-                        <port>8080</port>
-                        <!-- URL按照UTF-8进行编码 -->
-                        <uriEncoding>UTF-8</uriEncoding>
-                        <!-- setting.xml中配置的Server ID -->
-                        <server>TomcatServer</server>
-                        <contextFile>
-                            ${project.build.outputDirectory}/tomcat/tomcat-context.xml
-                        </contextFile>
+                        <skip>true</skip>
                     </configuration>
                 </plugin>
-                <!-- Jetty插件 -->
-                <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>maven-jetty-plugin</artifactId>
-                    <version>6.1.25</version>
-                    <configuration>
-                        <connectors>
-                            <connector
-                                    implementation = "org.mortbay.jetty.nio.SelectChannelConnector">
-                                <port>8080</port>
-                                <maxIdleTime>600000</maxIdleTime>
-                            </connector>
-                        </connectors>
-                        <!-- 在设置间隔秒检查Web应用是否有变化。默认为0，表示禁用热部署 -->
-                        <scanIntervalSeconds>3</scanIntervalSeconds>
-                        <jettyEnvXml>${project.build.outputDirectory}/jetty/jetty-env.xml</jettyEnvXml>
-                        <reload>automatic</reload>
-                    </configuration>
-                </plugin>
+
                 <!-- 单元测试插件 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -552,17 +205,6 @@
                     <configuration>
                         <parallel>classesAndMethods</parallel>
                         <threadCount>10</threadCount>
-                    </configuration>
-                </plugin>
-                <!-- MyBatis Generator -->
-                <plugin>
-                    <groupId>org.mybatis.generator</groupId>
-                    <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>1.3.5</version>
-                    <configuration>
-                        <configurationFile>
-                            ${project.basedir}/src/main/resources/mybatis/mybatis-generator.xml
-                        </configurationFile>
                     </configuration>
                 </plugin>
             </plugins>

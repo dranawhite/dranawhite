@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.common.mybatis.comment;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -31,7 +31,7 @@ public class VelocityReader {
     void init() throws IOException {
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
         InputStream propIns = resourceLoader.getResourceStream(
-                "velocity/velocity.properties");
+				"velocity/velocity.properties");
         Properties props = new Properties();
         props.load(propIns);
         vmEngine.init(props);

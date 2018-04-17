@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.common.mybatis.comment;
 
 /**
  * 解析VM文件

@@ -5,11 +5,48 @@
     <parent>
         <artifactId>dranawhite</artifactId>
         <groupId>com.dranawhite</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>dranawhite-common</artifactId>
+    <description>工具模块</description>
 
+    <properties>
+        <!-- Apache Commons -->
+        <!-- 3.7版本，适用于JDK 1.7+ -->
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <!-- 1.9.3版本，适用于JDK 1.5+ -->
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <!-- 4.1版本，适用于JDK 1.6+ -->
+        <commons-collection4.version>4.1</commons-collection4.version>
+        <commons-codec.version>1.11</commons-codec.version>
+    </properties>
+
+    <dependencies>
+        <!-- Apache Commons -->
+        <!-- Apache Commons Beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+        </dependency>
+        <!-- Apache Commons Lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <!-- Apache Commons Collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collection4.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
