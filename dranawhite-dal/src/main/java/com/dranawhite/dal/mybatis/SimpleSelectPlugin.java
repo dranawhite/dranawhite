@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.dal.mybatis;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;

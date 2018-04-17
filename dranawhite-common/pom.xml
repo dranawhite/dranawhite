@@ -55,6 +55,19 @@
             <artifactId>joda-time</artifactId>
             <version>${jota-time.version}</version>
         </dependency>
+
+        <!-- Spring Framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <!-- Dranawhite Framework -->
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-exception</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

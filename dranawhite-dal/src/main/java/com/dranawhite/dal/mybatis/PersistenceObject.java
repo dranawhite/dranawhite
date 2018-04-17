@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.dal.mybatis;
 
 import java.io.Serializable;
 

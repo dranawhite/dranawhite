@@ -1,7 +1,5 @@
-package com.dranawhite.common.mybatis;
+package com.dranawhite.dal.mybatis.comment;
 
-import com.dranawhite.common.mybatis.comment.VelocityConstants;
-import com.dranawhite.common.mybatis.comment.VelocityReader;
 import org.junit.Assert;
 import org.junit.Test;
 

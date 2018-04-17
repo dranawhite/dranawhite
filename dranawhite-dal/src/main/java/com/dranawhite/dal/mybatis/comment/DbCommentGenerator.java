@@ -1,4 +1,4 @@
-package com.dranawhite.common.mybatis.comment;
+package com.dranawhite.dal.mybatis.comment;
 
 import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 

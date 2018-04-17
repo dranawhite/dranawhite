@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource = "./mybatisGenerator.properties" />
+
+    <context id = "permission_mysql_tables" targetRuntime = "MyBatis3" defaultModelType = "flat">
+        <commentGenerator type = "com.dranawhite.dal.mybatis.comment.DbCommentGenerator">
+            <!-- 是否取消注释 -->
+            <property name = "suppressAllComments" value = "false" />
+            <property name = "suppressDate" value = "false" />
+            <!-- 自定义配置, 自定义注释 -->
+            <property name = "addRemarkComments" value = "true" />
+            <property name = "author" value = "liangyq" />
+            <property name = "version" value = "1.0" />
+            <property name = "suppressCopyRight" value = "true" />
+            <property name = "addLombokData" value = "true" />
+            <property name = "suppressModelAlias" value = "true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass = "${driverClass}"
+                        connectionURL = "${connectionURL}"
+                        userId = "${userId}"
+                        password = "${password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name = "forceBigDecimals" value = "true" />
+        </javaTypeResolver>
+
+        <!-- 数据表对应的model 层  -->
+        <javaModelGenerator targetPackage = "${entity}" targetProject = "${targetPath}">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name = "enableSubPackages" value = "false" />
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name = "trimStrings" value = "true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage = "${mapper}" targetProject = "${targetPath}">
+            <property name = "enableSubPackages" value = "false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type = "XMLMAPPER" targetPackage = "${dao}" targetProject = "${targetPath}">
+            <property name = "enableSubPackages" value = "false" />
+        </javaClientGenerator>
+
+        <table tableName = "t_resource" domainObjectName = "ResourceDO"
+               mapperName = "ResourceMapper" enableCountByExample = "true"
+               enableUpdateByExample = "true" enableDeleteByExample = "true"
+               enableSelectByExample = "true" selectByExampleQueryId = "true" />
+    </context>
+</generatorConfiguration>
+
+
+

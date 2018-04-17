@@ -4,4 +4,4 @@
  * @author liangyq 2018/1/29
  */
 
-package com.dranawhite.common.mybatis.comment;
+package com.dranawhite.dal.mybatis.comment;
