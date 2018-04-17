@@ -16,6 +16,21 @@
     <modules>
         <module>dranawhite-api</module>
         <module>dranawhite-common</module>
+        <module>dranawhite-config</module>
+        <module>dranawhite-dal</module>
+        <module>dranawhite-job</module>
+        <module>dranawhite-mq</module>
+        <module>dranawhite-distributed</module>
+        <module>dranawhite-core</module>
+        <module>dranawhite-web</module>
+        <module>dranawhite-tx</module>
+        <module>dranawhite-ui</module>
+        <module>dranawhite-log</module>
+        <module>dranawhite-cache</module>
+        <module>dranawhite-exception</module>
+        <module>dranawhite-event</module>
+        <module>dranawhite-interceptor</module>
+        <module>dranawhite-office</module>
     </modules>
 
     <properties>
@@ -30,6 +45,7 @@
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <!-- 4.1版本，适用于JDK 1.6+ -->
         <commons-collection4.version>4.1</commons-collection4.version>
+        <commons-codec.version>1.11</commons-codec.version>
         <!-- Spring  -->
         <spring.version>4.3.13.RELEASE</spring.version>
         <!-- Database -->
@@ -77,6 +93,11 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
             </dependency>
             <!-- Apache Commons Collections4 -->
             <dependency>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dranawhite-common</artifactId>
+    <artifactId>dranawhite-log</artifactId>
 
 
 </project>
