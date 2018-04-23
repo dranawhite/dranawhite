@@ -12,4 +12,20 @@
     <artifactId>dranawhite-mq</artifactId>
     <description>消息服务模块</description>
 
+    <properties>
+        <spring-mq.version>2.0.2.RELEASE</spring-mq.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-amqp</artifactId>
+            <version>${spring-mq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring-mq.version}</version>
+        </dependency>
+    </dependencies>
 </project>
