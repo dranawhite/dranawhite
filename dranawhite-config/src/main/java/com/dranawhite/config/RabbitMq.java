@@ -5,7 +5,7 @@ import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 import org.springframework.stereotype.Service;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/3/30 16:06]
  */
 @Service

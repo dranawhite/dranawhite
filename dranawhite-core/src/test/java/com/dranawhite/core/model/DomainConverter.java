@@ -5,7 +5,7 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/20 11:21]
  */
 public class DomainConverter {

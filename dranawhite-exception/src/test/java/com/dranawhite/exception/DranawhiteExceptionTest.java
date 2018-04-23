@@ -4,7 +4,7 @@ package com.dranawhite.exception;
 import org.junit.Test;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/17 15:03]
  */
 public class DranawhiteExceptionTest {

@@ -3,7 +3,7 @@ package com.dranawhite.core.model;
 import lombok.Data;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/20 11:19]
  */
 @Data

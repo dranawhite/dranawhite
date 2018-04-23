@@ -8,7 +8,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import java.io.IOException;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/17 14:43]
  */
 public final class ResourceLoader {

@@ -42,7 +42,7 @@ import java.util.Properties;
  *      company:                     公司名，若suppressAllComments设置为true，则忽略该字段
  * </pre>
  *
- * @author liangyq 2018/1/26
+ * @author dranawhite 2018/1/26
  */
 public class DbCommentGenerator implements CommentGenerator {
 

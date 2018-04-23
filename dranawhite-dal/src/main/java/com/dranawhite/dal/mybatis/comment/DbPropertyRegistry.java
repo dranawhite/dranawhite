@@ -3,7 +3,7 @@ package com.dranawhite.dal.mybatis.comment;
 import org.mybatis.generator.config.PropertyRegistry;
 
 /**
- * @author liangyq 2018/1/26
+ * @author dranawhite 2018/1/26
  */
 public class DbPropertyRegistry extends PropertyRegistry {
 

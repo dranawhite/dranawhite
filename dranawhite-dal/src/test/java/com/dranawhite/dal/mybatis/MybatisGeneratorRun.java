@@ -3,7 +3,7 @@ package com.dranawhite.dal.mybatis;
 import com.dranawhite.common.util.ResourceLoader;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/17 15:29]
  */
 public class MybatisGeneratorRun {

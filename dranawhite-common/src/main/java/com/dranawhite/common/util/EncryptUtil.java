@@ -9,7 +9,7 @@ import org.apache.commons.codec.digest.Md5Crypt;
  *     Commons-Codec包提供支持
  * </pre>
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/4 16:38]
  */
 public final class EncryptUtil {

@@ -10,7 +10,7 @@ import org.joda.time.format.ISODateTimeFormat;
  *     Joda-Time jar包提供支持
  * </pre>
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/17 14:00]
  */
 public final class DateUtil {

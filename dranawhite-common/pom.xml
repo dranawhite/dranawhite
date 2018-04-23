@@ -21,6 +21,9 @@
         <commons-collection4.version>4.1</commons-collection4.version>
         <commons-codec.version>1.11</commons-codec.version>
         <jota-time.version>2.7</jota-time.version>
+        <orika.version>1.5.2</orika.version>
+        <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
+        <el.version>3.0.1-b08</el.version>
     </properties>
 
     <dependencies>
@@ -56,6 +59,25 @@
             <version>${jota-time.version}</version>
         </dependency>
 
+        <!-- Orika -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${orika.version}</version>
+        </dependency>
+
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${el.version}</version>
+        </dependency>
+
         <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -69,5 +91,4 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 </project>
