@@ -1,5 +1,6 @@
 package com.dranawhite.mq;
 
+import com.dranawhite.common.util.RetryUtil;
 import lombok.Setter;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,14 +15,7 @@ import java.util.Map;
 public class MessageRetryExecution {
 
 	@Setter
-	private MessageRetryCounter messageRetryCounter;
-
-	@Setter
 	private RabbitTemplate rabbitTemplate;
-
-	public MessageRetryExecution() {
-		messageRetryCounter = new MessageRetryCounter();
-	}
 
 	@SuppressWarnings("unchecked")
 	public boolean retryMessage(Message message) {
@@ -33,8 +27,8 @@ public class MessageRetryExecution {
 				counter = (long) deathInfoList.get(0).get("count");
 			}
 		}
-		long ttl = messageRetryCounter.getTtlByCounter(counter);
-		if (ttl == MessageRetryCounter.STOP) {
+		long ttl = RetryUtil.getTtlByCounter(counter);
+		if (ttl == RetryUtil.STOP) {
 			return false;
 		} else {
 			message.getMessageProperties().setExpiration(String.valueOf(ttl));

@@ -17,6 +17,13 @@
     </properties>
 
     <dependencies>
+        <!-- Dranawhite -->
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-amqp</artifactId>
