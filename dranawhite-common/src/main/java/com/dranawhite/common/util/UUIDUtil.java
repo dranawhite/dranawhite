@@ -32,6 +32,7 @@ public final class UUIDUtil {
 
 	/**
 	 * version 1
+	 * 产生基于时间的32位UUID
 	 *
 	 * @return
 	 */
@@ -42,6 +43,9 @@ public final class UUIDUtil {
 	/**
 	 * version 1
 	 * 产生基于时间的32位UUID
+	 * <pre>
+	 *     全局有序，日期可读
+	 * </pre>
 	 *
 	 * 格式如下： 1804241902282658/D>1=,-<+).000001
 	 * <pre>
@@ -92,6 +96,7 @@ public final class UUIDUtil {
 		private static volatile String address;
 
 		public static String getAddress() {
+			// 双重检测单例
 			if (address != null) {
 				return address;
 			}
