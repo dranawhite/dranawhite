@@ -4,7 +4,7 @@ import org.apache.commons.codec.digest.Md5Crypt;
 
 /**
  * MD5加密
- *
+ * <p>
  * <pre>
  *     Commons-Codec包提供支持
  * </pre>
@@ -15,25 +15,39 @@ import org.apache.commons.codec.digest.Md5Crypt;
 public final class EncryptUtil {
 
 	/**
-	 * MD5加密
+	 * MD5加盐加密
 	 *
 	 * @param passwd 密码
 	 * @param salt   盐值
 	 *
-	 * @return 密文
+	 * @return 32位密文
 	 */
 	public static String encrypt(String passwd, String salt) {
-		return Md5Crypt.md5Crypt(passwd.getBytes(), salt);
+		String pass = Md5Crypt.md5Crypt(passwd.getBytes(), salt);
+		return pass.substring(2, pass.length());
 	}
 
 	/**
-	 * 随机产生盐值
+	 * 随机产生32位盐值
 	 *
 	 * @return 盐值
 	 */
 	public static String generateSalt() {
 		String today = DateUtil.getToday();
-		return Md5Crypt.md5Crypt(today.getBytes());
+		String salt = Md5Crypt.md5Crypt(today.getBytes());
+		return salt.substring(2, salt.length());
+	}
+
+	/**
+	 * MD5加密
+	 *
+	 * @param passwd 密码
+	 *
+	 * @return 32位密文
+	 */
+	public static String encrypt(String passwd) {
+		String pass = Md5Crypt.md5Crypt(passwd.getBytes());
+		return pass.substring(2, pass.length());
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.dranawhite.common.util;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatterBuilder;
 import org.joda.time.format.ISODateTimeFormat;
 
 /**
@@ -24,6 +25,16 @@ public final class DateUtil {
 	public static String getToday() {
 		DateTime dateTime = new DateTime();
 		return dateTime.toString(ISODateTimeFormat.basicDate());
+	}
+
+	public static String getYearPatternSecond() {
+		DateTime dateTime = new DateTime();
+		return dateTime.toString("yyyyMMddHHmmss");
+	}
+
+	public static String getYearPatternMicsecond() {
+		DateTime dateTime = new DateTime();
+		return dateTime.toString("yyyyMMddHHmmssSSS");
 	}
 
 }
