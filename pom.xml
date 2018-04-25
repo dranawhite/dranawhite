@@ -32,6 +32,7 @@
         <module>dranawhite-core</module>
         <module>dranawhite-web</module>
         <module>dranawhite-script</module>
+        <module>dranawhite-jmeter</module>
     </modules>
 
     <properties>
@@ -213,6 +214,91 @@
                         <skip>true</skip>
                     </configuration>
                 </plugin>
+                <!-- JavaDoc插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <configuration>
+                        <!-- 聚合 -->
+                        <aggregate>true</aggregate>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- 打包套件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.4.3</version>
+                    <executions>
+                        <execution>
+                            <id>package</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <!-- 自动将不使用的类去掉，保持包最小化 -->
+                                <minimizeJar>true</minimizeJar>
+                                <artifactSet>
+                                    <excludes>
+                                        <exclude>org.springframework:spring-test</exclude>
+                                        <exclude>junit:junit</exclude>
+                                    </excludes>
+                                </artifactSet>
+                                <!-- 将jar包中资源去除掉 -->
+                                <filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.SF</exclude>
+                                            <exclude>META-INF/*.DSA</exclude>
+                                            <exclude>META-INF/*.RSA</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                                <!-- 合并所有jar的spring.schemas -->
+                                <transformers>
+                                    <transformer
+                                            implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.handlers</resource>
+                                    </transformer>
+                                    <transformer
+                                            implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.schemas</resource>
+                                    </transformer>
+                                </transformers>
+                                <finalName>${project.artifactId}</finalName>
+                                <!-- 重命名jar包后缀为shade -->
+                                <shadedArtifactAttached>true</shadedArtifactAttached>
+                                <shadedClassifierName>shade</shadedClassifierName>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
 
                 <!-- 单元测试插件 -->
                 <plugin>
@@ -227,5 +313,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

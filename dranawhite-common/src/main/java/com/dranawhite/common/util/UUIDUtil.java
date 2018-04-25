@@ -42,17 +42,18 @@ public final class UUIDUtil {
 
 	/**
 	 * version 1
+	 *
 	 * 产生基于时间的32位UUID
 	 * <pre>
 	 *     全局有序，日期可读
 	 * </pre>
 	 *
-	 * 格式如下： 1804241902282658/D>1=,-<+).000001
+	 * 格式如下： 1804241902282658/D&gt;1=,-&lt;+).000001
 	 * <pre>
 	 *     日期从年开始，精确到毫秒；中间是MAC地址，后6位是序列
 	 * </pre>
 	 *
-	 * @return
+	 * @return UUID
 	 */
 	public static String getTimedPatternUUID() {
 		StringBuilder sb = new StringBuilder();
@@ -71,7 +72,7 @@ public final class UUIDUtil {
 	 * version 4
 	 * 随机UUID
 	 *
-	 * @return
+	 * @return UUID
 	 */
 	public static String getRandomUUID() {
 		return UUID.randomUUID().toString().replace(Separator.MIDDLELINE, "");

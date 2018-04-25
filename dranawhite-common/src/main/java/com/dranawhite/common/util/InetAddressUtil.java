@@ -26,7 +26,7 @@ public final class InetAddressUtil {
 	/**
 	 * 获取机器IP地址
 	 *
-	 * @return
+	 * @return IP地址
 	 */
 	public static String getLocalAddress() {
 		return getInetAddress().getHostAddress();
@@ -35,7 +35,7 @@ public final class InetAddressUtil {
 	/**
 	 * 获取机器MAC地址
 	 *
-	 * @return
+	 * @return MAC地址
 	 */
 	public static String getMacAddress() {
 		InetAddress inetAddress = getInetAddress();

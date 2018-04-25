@@ -4,7 +4,6 @@ import org.apache.commons.codec.digest.Md5Crypt;
 
 /**
  * MD5加密
- * <p>
  * <pre>
  *     Commons-Codec包提供支持
  * </pre>

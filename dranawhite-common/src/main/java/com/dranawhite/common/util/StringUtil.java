@@ -14,7 +14,7 @@ public final class StringUtil {
 	 * @param val 待填充的字符串
 	 * @param len 字符串完整长度
 	 *
-	 * @return
+	 * @return 填充后的字符串
 	 */
 	public static String fillStr(String val, int len) {
 		StringBuilder originStr = new StringBuilder();
