@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DranawhiteException extends RuntimeException {
 
+	private static final long serialVersionUID = 5416212529847869496L;
+
 	public DranawhiteException(String name) {
 		super(name);
 	}
@@ -19,11 +21,6 @@ public class DranawhiteException extends RuntimeException {
 
 	public DranawhiteException(String name, Exception e) {
 		super(name, e);
-	}
-
-	@Override
-	public DranawhiteException fillInStackTrace() {
-		return this;
 	}
 
 }

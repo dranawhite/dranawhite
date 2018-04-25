@@ -1,5 +1,7 @@
 package com.dranawhite.common.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * 字符串工具类
  *
@@ -21,14 +23,16 @@ public final class StringUtil {
 		for (int i = 0; i < len; i++) {
 			originStr.append("0");
 		}
-		if (val == null || val.equals("")) {
+		if (isEmpty(val)) {
 			return originStr.toString();
 		}
 		if (val.length() >= len) {
 			return val.substring(0, len);
 		}
-		String result = originStr.append(val).toString().substring(val.length(), originStr.length());
-		return result;
+		return originStr.append(val).toString().substring(val.length(), originStr.length());
 	}
 
+	public static boolean isEmpty(String val) {
+		return StringUtils.isEmpty(val);
+	}
 }
