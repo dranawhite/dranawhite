@@ -11,6 +11,6 @@ public class EnumTest {
 
 	@Test(expected = IllegalArgDranawhiteException.class)
 	public void testGetEnumByCode_Empty() {
-		CommonRespEnum.getRespEnumByCode("");
+		RespEnum.getRespEnumByCode("");
 	}
 }

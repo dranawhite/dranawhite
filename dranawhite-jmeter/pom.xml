@@ -27,6 +27,11 @@
         <!-- Dranawhite Framework -->
         <dependency>
             <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dranawhite</groupId>
             <artifactId>dranawhite-log</artifactId>
             <version>${project.version}</version>
         </dependency>

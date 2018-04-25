@@ -35,4 +35,16 @@ public final class StringUtil {
 	public static boolean isEmpty(String val) {
 		return StringUtils.isEmpty(val);
 	}
+
+	public static int compare(String str1, String str2) {
+		return StringUtils.compare(str1, str2);
+	}
+
+	public static boolean isEqual(String str1, String str2) {
+		return StringUtil.compare(str1, str2) == 0;
+	}
+
+	public static boolean isNotEqual(String str1, String str2) {
+		return StringUtil.compare(str1, str2) != 0;
+	}
 }
