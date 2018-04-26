@@ -34,7 +34,7 @@ public final class UUIDUtil {
 	 * version 1
 	 * 产生基于时间的32位UUID
 	 *
-	 * @return
+	 * @return UUID
 	 */
 	public static String getTimedUUID() {
 		return Generators.timeBasedGenerator().generate().toString();

@@ -1,5 +1,6 @@
 package com.dranawhite.jmh;
 
+import com.dranawhite.common.util.CollectionUtil;
 import com.dranawhite.exception.DranawhiteException;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -20,11 +21,15 @@ public class JmhRunner {
 	 * forks(3)                    表示做3轮测试
 	 * 采用3组，每组预热10轮，正式计量10轮
 	 */
-	public static void run(Class<?> clz) {
+	public static void run(Class<?> ...clz) {
 		try {
-			Options opt = new OptionsBuilder()
-					.include(clz.getSimpleName())
-					.warmupIterations(10)
+			OptionsBuilder optionsBuilder = new OptionsBuilder();
+			if (CollectionUtil.isNotEmpty(clz)) {
+				for(Class<?> cls : clz) {
+					optionsBuilder.include(cls.getSimpleName());
+				}
+			}
+			Options opt = optionsBuilder.warmupIterations(10)
 					.measurementIterations(10)
 					.forks(3)
 					.build();
