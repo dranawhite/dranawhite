@@ -19,22 +19,20 @@ import java.lang.reflect.Method;
 @Slf4j
 public class InvokeTimeInterceptor extends BaseCglibInterceptor {
 
-	@Override
-	protected Long setUp() {
+	protected long setUpTime() {
 		return System.currentTimeMillis();
 	}
 
-	@Override
-	protected Long tearDown() {
+	protected long tearDownTime() {
 		return System.currentTimeMillis();
 	}
 
 	@Override
 	public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
 		try {
-			long startTime = setUp();
+			long startTime = setUpTime();
 			Object result = methodProxy.invokeSuper(obj, args);
-			long endTime = tearDown();
+			long endTime = tearDownTime();
 			long time = endTime - startTime;
 			log.info("耗时：" + time);
 			return result;

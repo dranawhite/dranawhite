@@ -20,24 +20,22 @@ public class BaseCglibInterceptor implements MethodInterceptor {
 		return (T) Enhancer.create(clz, this);
 	}
 
-	protected <T> T setUp(){
-		return null;
-	}
+	protected void setUp(){}
 
 	protected <T> void setUp(T t){}
 
-	protected <T> T tearDown() {
-		return null;
-	}
+	protected void tearDown() {}
 
 	protected <T> void tearDown(T t){}
 
 	@Override
 	public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
 		try {
+			setUp();
 			setUp(obj);
 			Object result = methodProxy.invokeSuper(obj, args);
 			tearDown(obj);
+			tearDown();
 			return result;
 		} catch (Throwable t) {
 			throw new DranawhiteException("动态代理异常！", t);
