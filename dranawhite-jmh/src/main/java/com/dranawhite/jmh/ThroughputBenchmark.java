@@ -1,9 +1,11 @@
 package com.dranawhite.jmh;
 
-import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Warmup;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,15 +15,11 @@ import java.util.concurrent.TimeUnit;
  * @author liangyq
  * @version [1.0, 2018/4/26 17:08]
  */
-public class ThroughputBenchmark implements IBenchmark {
+@BenchmarkMode({Mode.Throughput})
+@Warmup(iterations = 10)
+@Measurement(iterations = 10)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@Fork(value = 3)
+public class ThroughputBenchmark {
 
-	@Override
-	@Benchmark
-	@BenchmarkMode({Mode.AverageTime})
-	@OutputTimeUnit(TimeUnit.NANOSECONDS)
-	public void run() {
-		benchmark();
-	}
-
-	protected void benchmark() {}
 }
