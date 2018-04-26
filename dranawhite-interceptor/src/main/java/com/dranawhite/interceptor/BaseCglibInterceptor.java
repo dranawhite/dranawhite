@@ -9,10 +9,15 @@ import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * 抽象Cglib拦截器
+ * CGLib字节码生成
+ * <pre>
+ *     对代理类所有方法的调用都会调用CGLibInterceptor，
+ * 该类执行intercept()方法对方法进行拦截.
+ *     被代理类无需实现任何接口
+ * </pre>
  *
- * @author liangyq
- * @version [1.0, 2018/4/26 14:55]
+ * @author dranawhite 2017/8/16
+ * @version 1.0
  */
 public class BaseCglibInterceptor implements MethodInterceptor {
 
@@ -20,13 +25,17 @@ public class BaseCglibInterceptor implements MethodInterceptor {
 		return (T) Enhancer.create(clz, this);
 	}
 
-	protected void setUp(){}
+	protected void setUp() {
+	}
 
-	protected <T> void setUp(T t){}
+	protected <T> void setUp(T t) {
+	}
 
-	protected void tearDown() {}
+	protected void tearDown() {
+	}
 
-	protected <T> void tearDown(T t){}
+	protected <T> void tearDown(T t) {
+	}
 
 	@Override
 	public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy) {
