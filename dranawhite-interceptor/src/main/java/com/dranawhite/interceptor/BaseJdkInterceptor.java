@@ -38,7 +38,7 @@ public class BaseJdkInterceptor<T> implements InvocationHandler {
 
 	protected void setUp(){}
 
-	protected void setUp(T proxyObj){};
+	protected void setUp(T proxyObj){}
 
 	protected void tearDown() {}
 
@@ -49,7 +49,7 @@ public class BaseJdkInterceptor<T> implements InvocationHandler {
 		try {
 			setUp();
 			setUp(proxyObj);
-			Object result = method.invoke(proxy, args);
+			Object result = method.invoke(proxyObj, args);
 			tearDown(proxyObj);
 			tearDown();
 			return result;
