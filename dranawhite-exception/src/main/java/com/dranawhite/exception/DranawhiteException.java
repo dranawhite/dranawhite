@@ -15,11 +15,11 @@ public class DranawhiteException extends RuntimeException {
 		super(name);
 	}
 
-	public DranawhiteException(Exception e) {
+	public DranawhiteException(Throwable e) {
 		super(e);
 	}
 
-	public DranawhiteException(String name, Exception e) {
+	public DranawhiteException(String name, Throwable e) {
 		super(name, e);
 	}
 

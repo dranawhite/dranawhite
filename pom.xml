@@ -16,7 +16,6 @@
     <modules>
         <module>dranawhite-api</module>
         <module>dranawhite-common</module>
-        <module>dranawhite-ui</module>
         <module>dranawhite-log</module>
         <module>dranawhite-exception</module>
         <module>dranawhite-config</module>
@@ -31,7 +30,6 @@
         <module>dranawhite-event</module>
         <module>dranawhite-core</module>
         <module>dranawhite-web</module>
-        <module>dranawhite-script</module>
         <module>dranawhite-jmeter</module>
     </modules>
 

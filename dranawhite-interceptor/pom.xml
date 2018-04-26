@@ -12,4 +12,29 @@
     <artifactId>dranawhite-interceptor</artifactId>
     <description>拦截器模块</description>
 
+    <properties>
+        <!-- 动态代理 -->
+        <cglib.version>3.2.6</cglib.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+
+        <!-- Dranawhite Framework -->
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-log</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-exception</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
