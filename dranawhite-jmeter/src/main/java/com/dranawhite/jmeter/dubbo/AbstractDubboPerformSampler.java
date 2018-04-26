@@ -23,9 +23,7 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 
 		log.info("Dubbo开启性能测试");
 		long startTime = System.currentTimeMillis();
-		setUp();
-		Result invokeResult = run();
-		tearDown();
+		Result invokeResult = run(javaSamplerContext);
 		long endTime = System.currentTimeMillis();
 		log.info("Dubbo完成性能测试， 耗时" + (endTime - startTime) + " 毫秒");
 
@@ -37,20 +35,14 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 		return result;
 	}
 
-	public void setUp() {
-		// Do Nothing
-	}
-
 	/**
 	 * 业务运行方法
 	 *
-	 * @param <T> 数据封装
+	 * @param context 取样器上下文
+	 * @param <T>     数据封装
 	 *
 	 * @return Result
 	 */
-	public abstract <T> Result<T> run();
+	public abstract <T> Result<T> run(JavaSamplerContext context);
 
-	public void tearDown() {
-		// Do Nothing
-	}
 }
