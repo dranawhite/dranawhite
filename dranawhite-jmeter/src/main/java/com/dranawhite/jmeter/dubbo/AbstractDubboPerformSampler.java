@@ -37,12 +37,16 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 		return result;
 	}
 
-	public void setUp(){
+	public void setUp() {
 		// Do Nothing
 	}
 
 	/**
 	 * 业务运行方法
+	 *
+	 * @param <T> 数据封装
+	 *
+	 * @return Result
 	 */
 	public abstract <T> Result<T> run();
 
