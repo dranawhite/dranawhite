@@ -31,6 +31,7 @@
         <module>dranawhite-core</module>
         <module>dranawhite-web</module>
         <module>dranawhite-jmeter</module>
+        <module>dranawhite-jmh</module>
     </modules>
 
     <properties>
@@ -251,6 +252,19 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>3.1.1</version>
+                    <configuration>
+                        <transformers>
+                            <!-- 合并所有jar的spring.schemas -->
+                            <transformer
+                                    implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.handlers</resource>
+                            </transformer>
+                            <transformer
+                                    implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.schemas</resource>
+                            </transformer>
+                        </transformers>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>package</id>
@@ -278,22 +292,6 @@
                                         </excludes>
                                     </filter>
                                 </filters>
-                                <transformers>
-                                    <!-- 合并所有jar的spring.schemas -->
-                                    <transformer
-                                            implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                        <resource>META-INF/spring.handlers</resource>
-                                    </transformer>
-                                    <transformer
-                                            implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                        <resource>META-INF/spring.schemas</resource>
-                                    </transformer>
-                                    <!-- 配置MainClass -->
-                                    <transformer
-                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                        <mainClass>com.fxc.rpc.impl.member.MemberProvider</mainClass>
-                                    </transformer>
-                                </transformers>
                                 <finalName>${project.artifactId}</finalName>
                                 <!-- 重命名jar包后缀为shade -->
                                 <shadedArtifactAttached>true</shadedArtifactAttached>
