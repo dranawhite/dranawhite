@@ -12,6 +12,8 @@ import java.util.Random;
  */
 public class CollectionInit {
 
+	public static final int DEFAULT_NUM = 100000;
+
 	/**
 	 * 初始化数组数据
 	 *
