@@ -1,4 +1,5 @@
 JMeter命令行
+注意: 设置jmeter.properties的user.classpath属性指定jar目录
 1) 配置maven-shade-plugin插件
 <configuration>
     <!-- 自动将不使用的类去掉，保持包最小化 -->
