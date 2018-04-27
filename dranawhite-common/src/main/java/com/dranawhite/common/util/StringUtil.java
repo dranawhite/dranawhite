@@ -36,6 +36,10 @@ public final class StringUtil {
 		return StringUtils.isEmpty(val);
 	}
 
+	public static boolean isNotEmpty(String val) {
+		return !isEmpty(val);
+	}
+
 	public static int compare(String str1, String str2) {
 		return StringUtils.compare(str1, str2);
 	}

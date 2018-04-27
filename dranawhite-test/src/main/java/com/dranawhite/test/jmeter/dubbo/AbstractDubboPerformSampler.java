@@ -31,6 +31,8 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 			result.setSuccessful(Boolean.FALSE);
 		} else {
 			result.setSuccessful(Boolean.TRUE);
+			result.setResponseData(invokeResult.getData().toString(), "UTF-8");
+			result.setDataType(SampleResult.TEXT);
 		}
 		return result;
 	}
