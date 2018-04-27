@@ -30,8 +30,7 @@
         <module>dranawhite-event</module>
         <module>dranawhite-core</module>
         <module>dranawhite-web</module>
-        <module>dranawhite-jmeter</module>
-        <module>dranawhite-jmh</module>
+        <module>dranawhite-test</module>
     </modules>
 
     <properties>

@@ -1,0 +1,25 @@
+JMH插件
+1) 配置TMP目录存放lock文件：设置Environment TMP = E:\tmp
+2) 使用-v extra参数，打印额外信息
+
+JMH命令行
+1) 配置maven-shade-plugin插件
+<configuration>
+    <minimizeJar>false</minimizeJar>
+        <transformers>
+            <!-- 合并所有jar的spring.schemas -->
+            <transformer
+                implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                <resource>META-INF/spring.handlers</resource>
+            </transformer>
+            <transformer
+                implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                <resource>META-INF/spring.schemas</resource>
+            </transformer>
+            <!-- 配置MainClass -->
+            <transformer
+                implementation = "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                <mainClass>org.openjdk.jmh.Main</mainClass>
+            </transformer>
+         </transformers>
+</configuration>

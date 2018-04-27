@@ -9,27 +9,48 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dranawhite-jmh</artifactId>
+    <artifactId>dranawhite-test</artifactId>
+    <description>测试专属</description>
 
     <properties>
+        <!-- JMeter压力测试 -->
+        <jmeter.version>4.0</jmeter.version>
+        <!-- JMH基准测试 -->
         <jmh.version>1.20</jmh.version>
     </properties>
 
     <dependencies>
+        <!-- JMeter -->
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_java</artifactId>
+            <version>${jmeter.version}</version>
+        </dependency>
+
         <!-- JMH -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <!-- 使用插件运行时，必需 -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Dranawhite Framework -->
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dranawhite</groupId>
+            <artifactId>dranawhite-log</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.dranawhite</groupId>
             <artifactId>dranawhite-exception</artifactId>
@@ -41,31 +62,4 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-shade-plugin</artifactId>
-                <configuration>
-                    <minimizeJar>false</minimizeJar>
-                    <transformers>
-                        <!-- 合并所有jar的spring.schemas -->
-                        <transformer
-                                implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                            <resource>META-INF/spring.handlers</resource>
-                        </transformer>
-                        <transformer
-                                implementation = "org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                            <resource>META-INF/spring.schemas</resource>
-                        </transformer>
-                        <!-- 配置MainClass -->
-                        <transformer
-                                implementation = "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>org.openjdk.jmh.Main</mainClass>
-                        </transformer>
-                    </transformers>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
