@@ -253,8 +253,6 @@
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>3.1.1</version>
                     <configuration>
-                        <!-- 自动将不使用的类去掉，保持包最小化 -->
-                        <minimizeJar>true</minimizeJar>
                         <transformers>
                             <!-- 合并所有jar的spring.schemas -->
                             <transformer
@@ -275,6 +273,8 @@
                                 <goal>shade</goal>
                             </goals>
                             <configuration>
+                                <!-- 不去除无用的类 -->
+                                <minimizeJar>false</minimizeJar>
                                 <artifactSet>
                                     <excludes>
                                         <exclude>org.springframework:spring-test</exclude>
