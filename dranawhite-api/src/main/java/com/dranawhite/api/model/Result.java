@@ -2,6 +2,8 @@ package com.dranawhite.api.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 结果类
  * <pre>
@@ -12,8 +14,9 @@ import lombok.Data;
  * @version [1.0, 2018/4/25 17:23]
  */
 @Data
-public class Result<T> {
+public class Result<T> implements Serializable {
 
+	private static final long serialVersionUID = 5849706289205355883L;
 	/**
 	 * 响应码
 	 */
