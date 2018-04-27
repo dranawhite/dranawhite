@@ -116,6 +116,7 @@
                     <include>**/*.txt</include>
                     <include>**/*.xlsx</include>
                     <include>**/*.xls</include>
+                    <include>META-INF/services/*</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
