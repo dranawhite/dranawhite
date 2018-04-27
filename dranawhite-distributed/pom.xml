@@ -14,6 +14,8 @@
 
     <properties>
         <dubbo.version>2.5.6</dubbo.version>
+        <zookeeper.version>3.4.10</zookeeper.version>
+        <zkClient.version>0.10</zkClient.version>
     </properties>
 
     <dependencies>
@@ -22,6 +24,16 @@
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkClient.version}</version>
         </dependency>
     </dependencies>
 </project>
