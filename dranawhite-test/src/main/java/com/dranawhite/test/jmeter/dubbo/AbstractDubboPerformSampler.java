@@ -2,11 +2,16 @@ package com.dranawhite.test.jmeter.dubbo;
 
 import com.dranawhite.api.model.RespEnum;
 import com.dranawhite.api.model.Result;
+import com.dranawhite.common.util.CollectionUtil;
 import com.dranawhite.common.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.jmeter.config.Argument;
+import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
+
+import java.util.Map;
 
 /**
  * Dubbo接口压力测试
@@ -37,6 +42,26 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 		}
 		return result;
 	}
+
+	@Override
+	public Arguments getDefaultParameters() {
+		Map<String, String> args = getArguments();
+		if (CollectionUtil.isEmpty(args)) {
+			return null;
+		}
+		Arguments arguments = new Arguments();
+		for (Map.Entry<String, String> entry : args.entrySet()) {
+			arguments.addArgument(entry.getKey(), entry.getValue());
+		}
+		return arguments;
+	}
+
+	/**
+	 * 获取方法参数
+	 *
+	 * @return 参数集
+	 */
+	public abstract Map<String, String> getArguments();
 
 	/**
 	 * 业务运行方法
