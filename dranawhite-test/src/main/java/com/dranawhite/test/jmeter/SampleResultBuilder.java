@@ -23,9 +23,10 @@ public final class SampleResultBuilder {
 			sampleResult.setResponseData(JsonUtil.toJson(result.getData()), "UTF-8");
 			sampleResult.setSuccessful(Boolean.TRUE);
 			sampleResult.setResponseMessageOK();
-			sampleResult.setResponseMessage(JsonUtil.toJson(result.getData()));
+			sampleResult.setResponseMessage(result.getRespDesc());
 		} else {
 			sampleResult.setResponseCode(result.getRespCode());
+			sampleResult.setResponseMessage(result.getRespDesc());
 			sampleResult.setSuccessful(Boolean.FALSE);
 		}
 		return sampleResult;
