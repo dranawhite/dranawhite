@@ -25,6 +25,7 @@
         <orika.version>1.5.2</orika.version>
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <el.version>3.0.1-b08</el.version>
+        <fastjson.version>1.2.47</fastjson.version>
     </properties>
 
     <dependencies>
@@ -64,6 +65,13 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${jota-time.version}</version>
+        </dependency>
+
+        <!-- Json -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!-- Orika -->

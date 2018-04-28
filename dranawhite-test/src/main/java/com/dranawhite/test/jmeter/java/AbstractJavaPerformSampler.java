@@ -1,9 +1,10 @@
-package com.dranawhite.test.jmeter.dubbo;
+package com.dranawhite.test.jmeter.java;
 
 import com.dranawhite.api.model.RespEnum;
 import com.dranawhite.api.model.Result;
 import com.dranawhite.common.util.CollectionUtil;
 import com.dranawhite.common.util.StringUtil;
+import com.dranawhite.test.jmeter.SampleResultBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.jmeter.config.Argument;
 import org.apache.jmeter.config.Arguments;
@@ -20,27 +21,17 @@ import java.util.Map;
  * @version [1.0, 2018/4/25 17:06]
  */
 @Slf4j
-public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerClient {
+public abstract class AbstractJavaPerformSampler extends AbstractJavaSamplerClient {
 
 	@Override
 	public SampleResult runTest(JavaSamplerContext javaSamplerContext) {
-		SampleResult result = new SampleResult();
 		String contextName = Thread.currentThread().getName();
-
-		log.info(contextName + "-Dubbo开启性能测试");
+		log.info(contextName + "-开启性能测试");
 		long startTime = System.currentTimeMillis();
 		Result invokeResult = run(javaSamplerContext);
 		long endTime = System.currentTimeMillis();
-		log.info(contextName + "-Dubbo完成性能测试， 耗时" + (endTime - startTime) + " 毫秒");
-
-		if (invokeResult == null || StringUtil.isNotEqual(invokeResult.getRespCode(), RespEnum.SUCCESS.getCode())) {
-			result.setSuccessful(Boolean.FALSE);
-		} else {
-			result.setSuccessful(Boolean.TRUE);
-			result.setResponseData(invokeResult.getData().toString(), "UTF-8");
-			result.setDataType(SampleResult.TEXT);
-		}
-		return result;
+		log.info(contextName + "-完成性能测试， 耗时" + (endTime - startTime) + " 毫秒");
+		return SampleResultBuilder.buildResult(invokeResult);
 	}
 
 	@Override
