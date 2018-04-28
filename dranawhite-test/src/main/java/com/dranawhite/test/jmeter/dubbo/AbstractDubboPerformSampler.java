@@ -20,12 +20,13 @@ public abstract class AbstractDubboPerformSampler extends AbstractJavaSamplerCli
 	@Override
 	public SampleResult runTest(JavaSamplerContext javaSamplerContext) {
 		SampleResult result = new SampleResult();
+		String contextName = Thread.currentThread().getName();
 
-		log.info("Dubbo开启性能测试");
+		log.info(contextName + "-Dubbo开启性能测试");
 		long startTime = System.currentTimeMillis();
 		Result invokeResult = run(javaSamplerContext);
 		long endTime = System.currentTimeMillis();
-		log.info("Dubbo完成性能测试， 耗时" + (endTime - startTime) + " 毫秒");
+		log.info(contextName + "-Dubbo完成性能测试， 耗时" + (endTime - startTime) + " 毫秒");
 
 		if (invokeResult == null || StringUtil.isNotEqual(invokeResult.getRespCode(), RespEnum.SUCCESS.getCode())) {
 			result.setSuccessful(Boolean.FALSE);
