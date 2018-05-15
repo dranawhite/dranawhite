@@ -14,4 +14,11 @@ public class IllegalArgDranawhiteException extends DranawhiteException {
 		super(message);
 	}
 
+	public IllegalArgDranawhiteException(String message, Throwable t) {
+		super(message, t);
+	}
+
+	public IllegalArgDranawhiteException(Throwable t) {
+		super(t);
+	}
 }

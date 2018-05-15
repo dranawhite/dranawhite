@@ -11,4 +11,12 @@ public class IllegalMonitorStateDranawhiteException extends DranawhiteException 
 	public IllegalMonitorStateDranawhiteException(String message) {
 		super(message);
 	}
+
+	public IllegalMonitorStateDranawhiteException(String message, Throwable t) {
+		super(message, t);
+	}
+
+	public IllegalMonitorStateDranawhiteException(Throwable t) {
+		super(t);
+	}
 }

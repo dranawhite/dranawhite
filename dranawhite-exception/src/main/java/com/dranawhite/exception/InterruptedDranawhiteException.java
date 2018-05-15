@@ -13,4 +13,12 @@ public class InterruptedDranawhiteException extends DranawhiteException {
 	public InterruptedDranawhiteException(String message) {
 		super(message);
 	}
+
+	public InterruptedDranawhiteException(String message, Throwable t) {
+		super(message, t);
+	}
+
+	public InterruptedDranawhiteException(Throwable t) {
+		super(t);
+	}
 }
