@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class SleepUnit {
 
-	public void seconds(int seconds) {
+	public static void seconds(int seconds) {
 		try {
 			TimeUnit.SECONDS.sleep(seconds);
 		} catch (InterruptedException ex) {
