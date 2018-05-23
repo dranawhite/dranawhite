@@ -13,14 +13,8 @@ import java.util.List;
 
 public class DBgenerrator {
 
-	public static String getURL() {
-		File f = new File(DBgenerrator.getURL());
-		System.out.println(f);
-		return null;
-	}
-
 	public static void autoDB(String configFilePath) {
-		List<String> warnings = new ArrayList<String>();
+		List<String> warnings = new ArrayList<>();
 		boolean overwrite = true;
 		File configFile = new File(configFilePath);
 		ConfigurationParser cp = new ConfigurationParser(warnings);
