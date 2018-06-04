@@ -36,7 +36,7 @@
     <properties>
         <!-- 编译版本号 -->
         <encoding>UTF-8</encoding>
-        <jdk.version>1.7</jdk.version>
+        <jdk.version>1.8</jdk.version>
         <lombok.version>1.16.20</lombok.version>
         <orika.version>1.5.2</orika.version>
         <!-- Spring  -->

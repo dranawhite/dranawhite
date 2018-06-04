@@ -12,4 +12,10 @@
     <artifactId>dranawhite-core</artifactId>
     <description>核心服务模块</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
