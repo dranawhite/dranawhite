@@ -1,0 +1,2 @@
+dubboProviderLog=com.dranawhite.distributed.dubbo.log.DubboProviderLogFilter
+dubboConsumerLog=com.dranawhite.distributed.dubbo.log.DubboConsumerLogFilter

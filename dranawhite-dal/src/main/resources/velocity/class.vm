@@ -2,5 +2,5 @@
  * $!{remark}
  *
  * @author $!{author} $!{email}
- * @version [V${version}, $!{curTime}]
+ * @version [V$!{version}, $!{curTime}]
  */

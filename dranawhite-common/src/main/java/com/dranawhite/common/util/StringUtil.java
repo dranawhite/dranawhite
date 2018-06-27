@@ -1,5 +1,6 @@
 package com.dranawhite.common.util;
 
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Pattern;
@@ -15,7 +16,7 @@ public final class StringUtil {
 	/**
 	 * 手机号正则表达式
 	 */
-	public static final String PHONE_REGEX = "((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}";
+	public static final String PHONE_REGEX = "((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}";
 
 	/**
 	 * 加权因字数

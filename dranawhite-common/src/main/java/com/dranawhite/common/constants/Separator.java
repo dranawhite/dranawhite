@@ -16,4 +16,5 @@ public final class Separator {
 	public static final String MIDDLELINE = "-";
 	public static final String POUND = "#";
 	public static final String ASTERISK = "*";
+	public static final String VERTICAL = "|";
 }

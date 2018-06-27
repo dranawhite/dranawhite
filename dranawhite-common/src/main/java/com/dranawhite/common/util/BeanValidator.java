@@ -1,5 +1,10 @@
 package com.dranawhite.common.util;
 
+import org.apache.commons.collections.CollectionUtils;
+
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
@@ -20,11 +25,19 @@ public final class BeanValidator {
 		validator = validatorFactory.getValidator();
 	}
 
-	public static <T, G> boolean validate(T obj, Class<G> clz) {
-		return validator.validate(obj, clz).size() == 0;
+	public static <T, G> String validate(T obj, Class<G> ...clz) {
+		Set<ConstraintViolation<T>> resultSet = validator.validate(obj, clz);
+		if (CollectionUtils.isEmpty(resultSet)) {
+			return "";
+		}
+		StringBuilder sb = new StringBuilder();
+		for (ConstraintViolation<T> violation : resultSet) {
+			sb.append(violation.getMessage()).append("|");
+		}
+		return sb.substring(0, sb.length() - 1);
 	}
 
-	public static <T> boolean validate(T obj) {
+	public static <T> String  validate(T obj) {
 		return validate(obj, Default.class);
 	}
 
