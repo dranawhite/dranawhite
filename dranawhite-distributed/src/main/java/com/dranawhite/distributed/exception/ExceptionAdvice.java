@@ -1,8 +1,8 @@
 package com.dranawhite.distributed.exception;
 
 import com.alibaba.fastjson.JSON;
-import com.liumi.base.model.Response;
-import com.liumi.base.model.ResponseBuilder;
+import com.dranawhite.distributed.model.Response;
+import com.dranawhite.distributed.model.ResponseBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
