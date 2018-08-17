@@ -47,12 +47,6 @@
             <artifactId>derby</artifactId>
             <version>${derby.version}</version>
         </dependency>
-        <!-- Oracle -->
-        <dependency>
-            <groupId>ojdbc</groupId>
-            <artifactId>ojdbc</artifactId>
-            <version>${oracle.version}</version>
-        </dependency>
         <!-- MySql -->
         <dependency>
             <groupId>mysql</groupId>
