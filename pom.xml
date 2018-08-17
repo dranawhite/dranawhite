@@ -43,6 +43,9 @@
         <!-- Spring  -->
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
         <junit.version>4.12</junit.version>
+
+        <!-- Maven远程发布 -->
+        <wagon-ssh.version>2.8</wagon-ssh.version>
     </properties>
 
     <dependencyManagement>
@@ -143,6 +146,15 @@
                 <filtering>false</filtering>
             </testResource>
         </testResources>
+
+        <!-- SSH协议增强 -->
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>${wagon-ssh.version}</version>
+            </extension>
+        </extensions>
 
         <pluginManagement>
             <plugins>
@@ -316,6 +328,70 @@
                     <configuration>
                         <parallel>classesAndMethods</parallel>
                         <threadCount>10</threadCount>
+                    </configuration>
+                </plugin>
+                <!-- Maven远程发布插件 -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>wagon-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <executions>
+                        <execution>
+                            <id>upload-single</id>
+                            <phase>package</phase>
+                            <goals>
+                                <!-- 上传 -->
+                                <goal>upload-single</goal>
+                                <!-- 执行命令 -->
+                                <goal>sshexec</goal>
+                            </goals>
+                            <configuration>
+                                <fromFile>${project.build.directory}/${project.artifactId}.war</fromFile>
+                                <url>scp://user:password@IP/HOME/tomcat/webapps/</url>
+                                <commands>
+                                    <!-- 重启Tomcat -->
+                                    <command>sh $HOME/restart_tomcat.sh restart</command>
+                                </commands>
+                                <!-- 显示命令 -->
+                                <displayCommandOutputs>true</displayCommandOutputs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Tomcat插件 -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <!-- Tomcat端口号 -->
+                        <port>8080</port>
+                        <!-- URL按照UTF-8进行编码 -->
+                        <uriEncoding>${encoding}</uriEncoding>
+                        <!-- setting.xml中配置的Server ID -->
+                        <server>TomcatServer</server>
+                        <contextFile>
+                            ${project.build.outputDirectory}/tomcat/tomcat-context.xml
+                        </contextFile>
+                    </configuration>
+                </plugin>
+                <!-- Jetty插件 -->
+                <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>maven-jetty-plugin</artifactId>
+                    <version>6.1.26</version>
+                    <configuration>
+                        <connectors>
+                            <connector
+                                    implementation = "org.mortbay.jetty.nio.SelectChannelConnector">
+                                <port>8080</port>
+                                <maxIdleTime>600000</maxIdleTime>
+                            </connector>
+                        </connectors>
+                        <!-- 在设置间隔秒检查Web应用是否有变化。默认为0，表示禁用热部署 -->
+                        <scanIntervalSeconds>3</scanIntervalSeconds>
+                        <jettyEnvXml>${project.build.outputDirectory}/jetty/jetty-env.xml</jettyEnvXml>
+                        <reload>automatic</reload>
                     </configuration>
                 </plugin>
             </plugins>
