@@ -1,18 +1,17 @@
 package com.dranawhite.test.jmeter.java;
 
-import com.dranawhite.api.model.RespEnum;
 import com.dranawhite.api.model.Result;
 import com.dranawhite.common.util.CollectionUtil;
-import com.dranawhite.common.util.StringUtil;
 import com.dranawhite.test.jmeter.SampleResultBuilder;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.jmeter.config.Argument;
+
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 
 import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Dubbo接口压力测试
