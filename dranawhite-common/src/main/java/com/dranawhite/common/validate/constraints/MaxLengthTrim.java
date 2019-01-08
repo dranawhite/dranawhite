@@ -1,4 +1,4 @@
-package com.dranawhite.common.validate;
+package com.dranawhite.common.validate.constraints;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

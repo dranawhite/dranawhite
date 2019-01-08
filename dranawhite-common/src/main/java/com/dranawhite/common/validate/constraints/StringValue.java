@@ -1,4 +1,4 @@
-package com.dranawhite.common.validate;
+package com.dranawhite.common.validate.constraints;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,21 +10,21 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * 校验字符串的值
+ * 字符串值校验
  * <pre>
- *     不允许null和空值
+ *     允许null和空值
  * </pre>
  *
  * @author liangyq
- * @version [1.0, 2018/5/29 17:47]
+ * @version [1.0, 2018/5/30 14:01]
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = {IntValueValidator.class})
-public @interface IntValue {
+@Constraint(validatedBy = {StringValueValidator.class})
+public @interface StringValue {
 
-	int value() default 0;
+	String value() default "";
 
 	String message() default "值非法！";
 

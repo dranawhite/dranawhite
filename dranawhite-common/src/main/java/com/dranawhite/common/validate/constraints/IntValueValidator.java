@@ -1,4 +1,4 @@
-package com.dranawhite.common.validate;
+package com.dranawhite.common.validate.constraints;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

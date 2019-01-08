@@ -40,13 +40,13 @@ public final class RetryUtil {
 
 	private static long calculateMaxElapsedTime() {
 		int counter = 0;
-		long elapasedTime = DEFAULT_INITIAL_INTERVAL;
+		long elapsedTime = DEFAULT_INITIAL_INTERVAL;
 		long maxIntervalTime;
 		while (++counter < DEFAULT_RETRY_COUNT) {
 			long tmpMaxIntervalTime = (long) (DEFAULT_INITIAL_INTERVAL * Math.pow(DEFAULT_MULTIPLIER, counter));
 			maxIntervalTime = tmpMaxIntervalTime < DEFAULT_MAX_INTERVAL ? tmpMaxIntervalTime : DEFAULT_MAX_INTERVAL;
-			elapasedTime += maxIntervalTime;
+			elapsedTime += maxIntervalTime;
 		}
-		return elapasedTime;
+		return elapsedTime;
 	}
 }

@@ -1,4 +1,4 @@
-package com.dranawhite.common.validate;
+package com.dranawhite.common.validate.constraints;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -7,20 +7,20 @@ import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author liangyq
- * @version [1.0, 2018/5/29 17:43]
+ * @version [1.0, 2018/5/29 17:56]
  */
-public class MaxLengthTrimValidator implements ConstraintValidator<MaxLengthTrim, String> {
+public class LengthValidator implements ConstraintValidator<Length, String> {
 
 	private int length;
 
 	@Override
-	public void initialize(MaxLengthTrim constraintAnnotation) {
+	public void initialize(Length constraintAnnotation) {
 		length = constraintAnnotation.length();
 	}
 
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
-		if (StringUtils.isBlank(value) || value.length() > length) {
+		if (StringUtils.isBlank(value) || value.length() != length) {
 			return false;
 		}
 		return true;
