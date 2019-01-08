@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 吞吐量基准
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/26 17:08]
  */
 @BenchmarkMode({Mode.Throughput})

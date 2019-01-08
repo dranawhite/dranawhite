@@ -1,7 +1,7 @@
 package com.dranawhite.distributed.model;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/7/19 14:44]
  */
 public class ResponseBuilder {

@@ -1,6 +1,4 @@
-/**
- * ymm56.com Inc. Copyright (c) 2013-2018 All Rights Reserved.
- */
+
 package com.dranawhite.common.text;
 
 import com.dranawhite.common.constants.Separator;
@@ -10,8 +8,8 @@ import java.text.MessageFormat;
 /**
  * 消息格式器
  *
- * @author liangyq
- * @version $Id: MessageFormatter.java, v 0.1 2018-11-09 10:59 liangyq Exp $$
+ * @author dranawhite
+ * @version $Id: MessageFormatter.java, v 0.1 2018-11-09 10:59 dranawhite Exp $$
  */
 public final class MessageFormatter {
 

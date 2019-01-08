@@ -10,7 +10,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/30 11:41]
  */
 @Target({ElementType.FIELD})

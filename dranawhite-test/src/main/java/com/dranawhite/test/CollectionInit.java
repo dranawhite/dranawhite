@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * 初始化集合数据
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/27 11:33]
  */
 public class CollectionInit {

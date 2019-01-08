@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/16 15:44]
  */
 public final class ThreadUnit {

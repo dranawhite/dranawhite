@@ -4,7 +4,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/29 17:48]
  */
 public class IntValueValidator implements ConstraintValidator<IntValue, Integer> {

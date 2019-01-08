@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/6/1 11:24]
  */
 @Target({ElementType.TYPE})

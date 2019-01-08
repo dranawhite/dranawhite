@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 /**
  * 地址工具类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/24 14:46]
  */
 public final class InetAddressUtil {

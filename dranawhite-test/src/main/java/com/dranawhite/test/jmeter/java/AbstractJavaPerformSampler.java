@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Dubbo接口压力测试
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/25 17:06]
  */
 @Slf4j

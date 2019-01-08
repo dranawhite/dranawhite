@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * 接口响应体
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/7/19 14:44]
  */
 @Data

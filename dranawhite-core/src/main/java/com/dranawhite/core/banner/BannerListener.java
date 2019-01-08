@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.InputStreamReader;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/6/1 16:20]
  */
 @Slf4j

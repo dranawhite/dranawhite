@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 平均运行时间基准
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/26 17:03]
  */
 @BenchmarkMode({Mode.AverageTime})

@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Velocity读取模板文件
  *
- * @author liangyuquan
+ * @author dranawhite
  * @version [V1.0, 2018/1/29]
  */
 public class VelocityReaderTest {

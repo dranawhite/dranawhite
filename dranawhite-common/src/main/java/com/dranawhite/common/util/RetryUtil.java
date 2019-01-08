@@ -4,7 +4,7 @@ import org.springframework.util.backoff.BackOffExecution;
 import org.springframework.util.backoff.ExponentialBackOff;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/12 15:47]
  */
 public final class RetryUtil {

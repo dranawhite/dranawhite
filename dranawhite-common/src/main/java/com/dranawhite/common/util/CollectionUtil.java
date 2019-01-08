@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 集合工具类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/26 17:27]
  */
 public final class CollectionUtil {

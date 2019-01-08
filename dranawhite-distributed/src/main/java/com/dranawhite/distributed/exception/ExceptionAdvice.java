@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * Dubbo统一异常处理
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/31 15:59]
  */
 

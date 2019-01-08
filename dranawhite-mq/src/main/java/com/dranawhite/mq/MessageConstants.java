@@ -3,7 +3,7 @@ package com.dranawhite.mq;
 /**
  * 消息常量
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/12 18:53]
  */
 public final class MessageConstants {

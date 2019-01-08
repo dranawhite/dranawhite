@@ -15,7 +15,7 @@ import javax.validation.Payload;
  *     允许null和空值
  * </pre>
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/30 14:01]
  */
 @Target({ElementType.FIELD})

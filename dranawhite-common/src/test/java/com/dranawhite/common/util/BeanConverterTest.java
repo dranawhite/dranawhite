@@ -4,7 +4,7 @@ import lombok.Data;
 import org.junit.Test;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/6/5 14:45]
  */
 public class BeanConverterTest {

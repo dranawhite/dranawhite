@@ -10,7 +10,7 @@ import java.io.Serializable;
  *     用于接口间方法调用返回
  * </pre>
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/25 17:23]
  */
 @Data

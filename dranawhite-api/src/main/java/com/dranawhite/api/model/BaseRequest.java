@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 请求基类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/26 14:34]
  */
 public abstract class BaseRequest implements Serializable {

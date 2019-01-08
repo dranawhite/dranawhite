@@ -7,7 +7,7 @@ import com.dranawhite.common.util.StringUtil;
 import org.apache.jmeter.samplers.SampleResult;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/28 10:14]
  */
 public final class SampleResultBuilder {

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 响应基类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/26 14:35]
  */
 public class BaseResponse implements Serializable {

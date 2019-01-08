@@ -4,7 +4,7 @@ import com.dranawhite.api.model.RespEnum;
 import com.dranawhite.api.model.Result;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/25 19:24]
  */
 public class ResultBuilder {

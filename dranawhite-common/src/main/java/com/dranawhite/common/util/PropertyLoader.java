@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * Property工具类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/27 16:06]
  */
 public final class PropertyLoader {

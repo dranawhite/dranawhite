@@ -12,7 +12,7 @@ import javax.validation.Payload;
 /**
  * int型枚举值校验
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/5/30 10:26]
  */
 @Target({ElementType.FIELD})

@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * 字符串工具类
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/24 18:09]
  */
 public final class StringUtil {

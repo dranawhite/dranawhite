@@ -9,7 +9,7 @@ import com.alibaba.dubbo.rpc.RpcContext;
 /**
  * Dubbo调用日志和消费日志
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/6/12 15:12]
  */
 public abstract class DubboLogFilter implements Filter {

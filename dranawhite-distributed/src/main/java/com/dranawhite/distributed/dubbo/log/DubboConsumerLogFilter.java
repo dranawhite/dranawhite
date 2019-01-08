@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * DubboConsumer日志
  *
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/6/12 18:03]
  */
 @Activate(group = {Constants.CONSUMER}, order = -999)

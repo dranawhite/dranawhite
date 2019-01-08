@@ -14,7 +14,7 @@ import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
- * @author liangyq
+ * @author dranawhite
  * @version [1.0, 2018/4/24 10:39]
  */
 public class UUIDUtilTest {
