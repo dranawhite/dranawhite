@@ -17,7 +17,6 @@
         <module>dranawhite-api</module>
         <module>dranawhite-common</module>
         <module>dranawhite-log</module>
-        <module>dranawhite-exception</module>
         <module>dranawhite-config</module>
         <module>dranawhite-dal</module>
         <module>dranawhite-tx</module>

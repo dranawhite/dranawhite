@@ -1,15 +1,14 @@
-
 package com.dranawhite.common.exception.data;
 
-import com.ymm.bi.portal.common.util.exception.PortalRuntimeException;
+import com.dranawhite.common.exception.DranaRuntimeException;
 
 /**
- * Portal数据异常
+ * 数据异常
  *
  * @author dranawhite
  * @version $Id: DranaDataException.java, v 0.1 2018-10-08 9:03 dranawhite Exp $$
  */
-public class DranaDataException extends PortalRuntimeException {
+public class DranaDataException extends DranaRuntimeException {
 
     public DranaDataException(String message) {
         super(message);
