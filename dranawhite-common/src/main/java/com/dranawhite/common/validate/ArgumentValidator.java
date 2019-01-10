@@ -43,7 +43,7 @@ public final class ArgumentValidator {
                 }
             }
         } catch (Exception ex) {
-            throw new DranaIllegalArgumentException(ex.getMessage(), ResultCodeEnum.ILLEGAL_PARAM, ex);
+            throw new DranaIllegalArgumentException(ex.getMessage(), ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
         }
     }
 
@@ -70,7 +70,7 @@ public final class ArgumentValidator {
                 continue;
             }
             if (!(arg instanceof Number)) {
-                throw new DranaIllegalArgumentException(arg.toString() + "必须是数字类型", ResultCodeEnum.ILLEGAL_PARAM);
+                throw new DranaIllegalArgumentException(arg.toString() + "必须是数字类型", ResultCodeEnum.SERVICE_UNAVAILABLE);
             }
         }
     }

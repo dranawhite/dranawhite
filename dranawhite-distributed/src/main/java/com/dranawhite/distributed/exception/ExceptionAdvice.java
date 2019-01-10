@@ -28,14 +28,16 @@ public class ExceptionAdvice {
 			if (response instanceof Response) {
 				return (Response<T>) response;
 			} else {
-				return ResponseBuilder.buildResponse(ResultCodeEnum.RPC_ERR.getCode(), ResultCodeEnum.RPC_ERR.getDesc());
+				return ResponseBuilder.buildResponse(ResultCodeEnum.SERVICE_UNAVAILABLE.getCode(),
+						ResultCodeEnum.SERVICE_UNAVAILABLE.getDesc());
 			}
 		} catch (Throwable tw) {
 			final String methodName = joinPoint.getSignature().getDeclaringTypeName() + "#" +
 					joinPoint.getSignature().getName();
 			final String methodArg = buildMethodArgs(joinPoint);
 			log.error("系统异常, 业务方法:{}, 方法入参: {}", methodName, methodArg, tw);
-			return ResponseBuilder.buildResponse(ResultCodeEnum.RPC_ERR.getCode(), ResultCodeEnum.RPC_ERR.getDesc());
+			return ResponseBuilder.buildResponse(ResultCodeEnum.SERVICE_UNAVAILABLE.getCode(),
+					ResultCodeEnum.SERVICE_UNAVAILABLE.getDesc());
 		}
 	}
 

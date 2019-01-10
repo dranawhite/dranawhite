@@ -2,7 +2,7 @@ package com.dranawhite.common.validate;
 
 import com.dranawhite.common.constants.Separator;
 import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.request.DranaRequestArgumentException;
+import com.dranawhite.common.exception.request.DranaIllegalRequestException;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -42,7 +42,7 @@ public final class BeanValidator {
      */
     public static <T, G> void validate(T obj, Class<G>... clz) {
         if (Objects.isNull(obj) || ArgumentValidator.assertNull(clz)) {
-            throw new DranaRequestArgumentException("入参不能为空!", ResultCodeEnum.ILLEGAL_REQUEST);
+            throw new DranaIllegalRequestException("入参不能为空!", ResultCodeEnum.ILLEGAL_REQUEST);
         }
 
         Set<ConstraintViolation<T>> resultSet = validator.validate(obj, clz);
@@ -55,7 +55,7 @@ public final class BeanValidator {
         }
         String result = sb.substring(0, sb.length() - 1);
         if (StringUtils.isNotBlank(result)) {
-            throw new DranaRequestArgumentException(result, ResultCodeEnum.ILLEGAL_REQUEST);
+            throw new DranaIllegalRequestException(result, ResultCodeEnum.ILLEGAL_REQUEST);
         }
     }
 
@@ -67,7 +67,7 @@ public final class BeanValidator {
      */
     public static <T> void validate(T obj) {
         if (Objects.isNull(obj)) {
-            throw new DranaRequestArgumentException("入参不能为空!", ResultCodeEnum.ILLEGAL_REQUEST);
+            throw new DranaIllegalRequestException("入参不能为空!", ResultCodeEnum.ILLEGAL_REQUEST);
         }
         validate(obj, Default.class);
     }

@@ -20,7 +20,7 @@ public final class SampleResultBuilder {
 			sampleResult.setSuccessful(Boolean.FALSE);
 		} else if (StringUtil.isEqual(RespEnum.SUCCESS.getCode(), result.getRespCode())) {
 			sampleResult.setResponseCode(result.getRespCode());
-			sampleResult.setResponseData(JsonUtil.toJson(result.getData()), "UTF-8");
+			sampleResult.setResponseData(JsonUtil.toJsonString(result.getData()), "UTF-8");
 			sampleResult.setSuccessful(Boolean.TRUE);
 			sampleResult.setResponseMessageOK();
 			sampleResult.setResponseMessage(result.getRespDesc());
