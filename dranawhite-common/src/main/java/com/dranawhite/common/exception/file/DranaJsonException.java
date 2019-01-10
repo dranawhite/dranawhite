@@ -1,5 +1,7 @@
 package com.dranawhite.common.exception.file;
 
+import com.dranawhite.common.exception.ResultCodeEnum;
+
 /**
  * Portal JSON异常
  *
@@ -8,19 +10,19 @@ package com.dranawhite.common.exception.file;
  */
 public class DranaJsonException extends DranaFileException {
 
-    public DranaJsonException(String message) {
-        super(message);
+    public DranaJsonException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaJsonException(String message, Object... args) {
-        super(message, args);
+    public DranaJsonException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaJsonException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaJsonException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaJsonException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaJsonException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

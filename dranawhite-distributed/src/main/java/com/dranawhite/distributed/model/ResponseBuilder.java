@@ -6,7 +6,7 @@ package com.dranawhite.distributed.model;
  */
 public class ResponseBuilder {
 
-	public static <T> Response<T> buildResponse(String code, String desc, T data) {
+	public static <T> Response<T> buildResponse(int code, String desc, T data) {
 		Response response = new Response();
 		response.setCode(code);
 		response.setDesc(desc);
@@ -14,7 +14,7 @@ public class ResponseBuilder {
 		return response;
 	}
 
-	public static <T> Response<T> buildResponse(String code, String desc) {
+	public static <T> Response<T> buildResponse(int code, String desc) {
 		return buildResponse(code, desc, null);
 	}
 

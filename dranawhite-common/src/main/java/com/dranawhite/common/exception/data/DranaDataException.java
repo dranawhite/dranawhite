@@ -1,6 +1,7 @@
 package com.dranawhite.common.exception.data;
 
 import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 /**
  * 数据异常
@@ -10,19 +11,19 @@ import com.dranawhite.common.exception.DranaRuntimeException;
  */
 public class DranaDataException extends DranaRuntimeException {
 
-    public DranaDataException(String message) {
-        super(message);
+    public DranaDataException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaDataException(String message, Object... args) {
-        super(message, args);
+    public DranaDataException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaDataException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaDataException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaDataException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaDataException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

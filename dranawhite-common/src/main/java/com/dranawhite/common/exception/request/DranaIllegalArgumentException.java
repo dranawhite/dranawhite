@@ -1,5 +1,7 @@
 package com.dranawhite.common.exception.request;
 
+import com.dranawhite.common.exception.ResultCodeEnum;
+
 /**
  * 参数非法异常
  *
@@ -8,19 +10,19 @@ package com.dranawhite.common.exception.request;
  */
 public class DranaIllegalArgumentException extends DranaRequestException {
 
-    public DranaIllegalArgumentException(String message) {
-        super(message);
+    public DranaIllegalArgumentException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaIllegalArgumentException(String message, Object... args) {
-        super(message, args);
+    public DranaIllegalArgumentException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaIllegalArgumentException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaIllegalArgumentException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaIllegalArgumentException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaIllegalArgumentException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

@@ -1,4 +1,6 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.converter;
+
+import java.util.List;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
@@ -25,6 +27,10 @@ public final class BeanConverter {
 
 	public static <S, T> T convert(S origin, Class<T> clz) {
 		return mapperFacade.map(origin, clz);
+	}
+
+	public static <S, T> List<T> convert(List<S> originList, Class<T> clz) {
+		return mapperFacade.mapAsList(originList, clz);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.dranawhite.common.exception.notify;
 
 import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 /**
  * 通知异常
@@ -10,19 +11,19 @@ import com.dranawhite.common.exception.DranaRuntimeException;
  */
 public class DranaNotifyException extends DranaRuntimeException {
 
-	public DranaNotifyException(String message) {
-		super(message);
+	public DranaNotifyException(String message, ResultCodeEnum resultCodeEnum) {
+		super(message, resultCodeEnum);
 	}
 
-	public DranaNotifyException(String message, Object... args) {
-		super(message, args);
+	public DranaNotifyException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+		super(message, resultCodeEnum, args);
 	}
 
-	public DranaNotifyException(String message, Throwable tr) {
-		super(message, tr);
+	public DranaNotifyException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+		super(message, resultCodeEnum, tr);
 	}
 
-	public DranaNotifyException(String message, Throwable tr, Object... args) {
-		super(message, tr, args);
+	public DranaNotifyException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+		super(message, resultCodeEnum, tr, args);
 	}
 }

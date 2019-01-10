@@ -1,6 +1,5 @@
 package com.dranawhite.common.util;
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Pattern;
@@ -12,6 +11,10 @@ import java.util.regex.Pattern;
  * @version [1.0, 2018/4/24 18:09]
  */
 public final class StringUtil {
+
+	public static final String EMPTY = "";
+
+	public static final String NULL = "null";
 
 	/**
 	 * 手机号正则表达式

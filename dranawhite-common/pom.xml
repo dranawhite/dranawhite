@@ -20,12 +20,13 @@
         <!-- 4.1版本，适用于JDK 1.6+ -->
         <commons-collection4.version>4.1</commons-collection4.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <guava.version>23.0</guava.version>
         <jug.version>3.1.5</jug.version>
         <jota-time.version>2.7</jota-time.version>
         <orika.version>1.5.2</orika.version>
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <el.version>3.0.1-b08</el.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <jackson.version>2.9.6</jackson.version>
     </properties>
 
     <dependencies>
@@ -53,6 +54,14 @@
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collection4.version}</version>
         </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
         <!-- UUID -->
         <dependency>
             <groupId>com.fasterxml.uuid</groupId>
@@ -69,9 +78,19 @@
 
         <!-- Json -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Orika -->

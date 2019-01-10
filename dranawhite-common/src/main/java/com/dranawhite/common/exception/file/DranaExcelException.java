@@ -1,5 +1,7 @@
 package com.dranawhite.common.exception.file;
 
+import com.dranawhite.common.exception.ResultCodeEnum;
+
 /**
  * Excel异常
  *
@@ -8,19 +10,19 @@ package com.dranawhite.common.exception.file;
  */
 public class DranaExcelException extends DranaFileException {
 
-    public DranaExcelException(String message) {
-        super(message);
+    public DranaExcelException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaExcelException(String message, Object... args) {
-        super(message, args);
+    public DranaExcelException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaExcelException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaExcelException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaExcelException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaExcelException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

@@ -4,6 +4,8 @@ import com.dranawhite.common.text.MessageFormatter;
 
 import org.springframework.core.NestedRuntimeException;
 
+import lombok.Getter;
+
 /**
  * 运行时异常
  *
@@ -12,20 +14,27 @@ import org.springframework.core.NestedRuntimeException;
  */
 public class DranaRuntimeException extends NestedRuntimeException {
 
-    public DranaRuntimeException(String message) {
+    @Getter
+    protected ResultCodeEnum resultCodeEnum;
+
+    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum) {
         super(message);
+        this.resultCodeEnum = resultCodeEnum;
     }
 
-    public DranaRuntimeException(String message, Object... args) {
+    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
         super(MessageFormatter.format(message, args));
+        this.resultCodeEnum = resultCodeEnum;
     }
 
-    public DranaRuntimeException(String message, Throwable tr) {
+    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
         super(message, tr);
+        this.resultCodeEnum = resultCodeEnum;
     }
 
-    public DranaRuntimeException(String message, Throwable tr, Object... args) {
+    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
         super(MessageFormatter.format(message, args), tr);
+        this.resultCodeEnum = resultCodeEnum;
     }
 
 }

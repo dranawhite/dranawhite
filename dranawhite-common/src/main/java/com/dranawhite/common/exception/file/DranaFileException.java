@@ -1,6 +1,7 @@
 package com.dranawhite.common.exception.file;
 
 import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 /**
  * Portal文件异常
@@ -10,19 +11,19 @@ import com.dranawhite.common.exception.DranaRuntimeException;
  */
 public class DranaFileException extends DranaRuntimeException {
 
-    public DranaFileException(String message) {
-        super(message);
+    public DranaFileException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaFileException(String message, Object... args) {
-        super(message, args);
+    public DranaFileException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaFileException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaFileException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaFileException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaFileException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

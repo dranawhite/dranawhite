@@ -1,8 +1,13 @@
 package com.dranawhite.common.util;
 
+import com.dranawhite.common.validate.ArgumentValidator;
+
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormatterBuilder;
 import org.joda.time.format.ISODateTimeFormat;
+
+import java.util.Date;
+import java.util.Locale;
+
 
 /**
  * 日期工具类
@@ -16,25 +21,29 @@ import org.joda.time.format.ISODateTimeFormat;
  */
 public final class DateUtil {
 
-	public static String getYesterday() {
-		DateTime dateTime = new DateTime();
-		DateTime yesterday = dateTime.minusDays(1);
-		return yesterday.toString(ISODateTimeFormat.basicDate());
-	}
+    private String milliSecondFormatter = "yyyyMMdd_HHmmss_SSS";
+    private String secondFormatter = "yyyy-MM-dd HH:mm:ss";
 
-	public static String getToday() {
-		DateTime dateTime = new DateTime();
-		return dateTime.toString(ISODateTimeFormat.basicDate());
-	}
 
-	public static String getYearPatternSecond() {
-		DateTime dateTime = new DateTime();
-		return dateTime.toString("yyyyMMddHHmmss");
-	}
+    public static String getYesterday() {
+        DateTime dateTime = new DateTime();
+        DateTime yesterday = dateTime.minusDays(1);
+        return yesterday.toString(ISODateTimeFormat.basicDate());
+    }
 
-	public static String getYearPatternMicsecond() {
-		DateTime dateTime = new DateTime();
-		return dateTime.toString("yyyyMMddHHmmssSSS");
-	}
+    public static String getToday() {
+        DateTime dateTime = new DateTime();
+        return dateTime.toString(ISODateTimeFormat.basicDate());
+    }
+
+    public static String getYearPatternSecond() {
+        DateTime dateTime = new DateTime();
+        return dateTime.toString("yyyyMMddHHmmss");
+    }
+
+    public static String getYearPatternMicsecond() {
+        DateTime dateTime = new DateTime();
+        return dateTime.toString("yyyyMMddHHmmssSSS");
+    }
 
 }

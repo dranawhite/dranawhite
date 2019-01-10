@@ -1,5 +1,7 @@
 package com.dranawhite.common.exception.request;
 
+import com.dranawhite.common.exception.ResultCodeEnum;
+
 /**
  * 请求繁忙异常
  *
@@ -8,19 +10,19 @@ package com.dranawhite.common.exception.request;
  */
 public class DranaRequestBusyException extends DranaRequestException {
 
-    public DranaRequestBusyException(String message) {
-        super(message);
+    public DranaRequestBusyException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaRequestBusyException(String message, Object... args) {
-        super(message, args);
+    public DranaRequestBusyException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaRequestBusyException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaRequestBusyException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaRequestBusyException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaRequestBusyException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }

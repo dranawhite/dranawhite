@@ -1,5 +1,7 @@
 package com.dranawhite.common.util;
 
+import com.dranawhite.common.converter.BeanConverter;
+
 import lombok.Data;
 import org.junit.Test;
 

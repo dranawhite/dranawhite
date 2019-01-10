@@ -1,11 +1,14 @@
 package com.dranawhite.distributed.exception;
 
-import com.alibaba.fastjson.JSON;
+import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.util.JsonUtil;
 import com.dranawhite.distributed.model.Response;
 import com.dranawhite.distributed.model.ResponseBuilder;
-import lombok.extern.slf4j.Slf4j;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Dubbo统一异常处理
@@ -18,9 +21,6 @@ import org.springframework.stereotype.Component;
 @Component("exceptionAdvice")
 public class ExceptionAdvice {
 
-	private final String FAIL_CODE = "2000";
-	private final String FAIL_DESC = "服务调用失败";
-
 	@SuppressWarnings("unchecked")
 	public <T> Response<T> exceptionIntercept(ProceedingJoinPoint joinPoint) {
 		try {
@@ -28,14 +28,14 @@ public class ExceptionAdvice {
 			if (response instanceof Response) {
 				return (Response<T>) response;
 			} else {
-				return ResponseBuilder.buildResponse(FAIL_CODE, FAIL_DESC);
+				return ResponseBuilder.buildResponse(ResultCodeEnum.RPC_ERR.getCode(), ResultCodeEnum.RPC_ERR.getDesc());
 			}
 		} catch (Throwable tw) {
 			final String methodName = joinPoint.getSignature().getDeclaringTypeName() + "#" +
 					joinPoint.getSignature().getName();
 			final String methodArg = buildMethodArgs(joinPoint);
 			log.error("系统异常, 业务方法:{}, 方法入参: {}", methodName, methodArg, tw);
-			return ResponseBuilder.buildResponse(FAIL_CODE, FAIL_DESC);
+			return ResponseBuilder.buildResponse(ResultCodeEnum.RPC_ERR.getCode(), ResultCodeEnum.RPC_ERR.getDesc());
 		}
 	}
 
@@ -45,7 +45,7 @@ public class ExceptionAdvice {
 		StringBuilder args = new StringBuilder();
 		if (argObjs != null && argObjs.length > 0) {
 			for (Object arg : argObjs) {
-				args.append(arg.getClass()).append(JSON.toJSONString(arg)).append(",");
+				args.append(arg.getClass()).append(JsonUtil.toJsonString(arg)).append(",");
 			}
 			methodArg = args.substring(0, args.length() - 1);
 		}

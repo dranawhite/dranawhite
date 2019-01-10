@@ -1,5 +1,7 @@
 package com.dranawhite.common.exception.data;
 
+import com.dranawhite.common.exception.ResultCodeEnum;
+
 /**
  * 数据访问异常
  *
@@ -8,19 +10,19 @@ package com.dranawhite.common.exception.data;
  */
 public class DranaDataAccessException extends DranaDataException {
 
-    public DranaDataAccessException(String message) {
-        super(message);
+    public DranaDataAccessException(String message, ResultCodeEnum resultCodeEnum) {
+        super(message, resultCodeEnum);
     }
 
-    public DranaDataAccessException(String message, Object... args) {
-        super(message, args);
+    public DranaDataAccessException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
+        super(message, resultCodeEnum, args);
     }
 
-    public DranaDataAccessException(String message, Throwable tr) {
-        super(message, tr);
+    public DranaDataAccessException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
+        super(message, resultCodeEnum, tr);
     }
 
-    public DranaDataAccessException(String message, Throwable tr, Object... args) {
-        super(message, tr, args);
+    public DranaDataAccessException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
+        super(message, resultCodeEnum, tr, args);
     }
 }
