@@ -1,9 +1,9 @@
 package com.dranawhite.test.jmeter.java;
 
 import com.dranawhite.api.model.Result;
-import com.dranawhite.common.util.CollectionUtil;
 import com.dranawhite.test.jmeter.SampleResultBuilder;
 
+import org.apache.commons.collections.MapUtils;
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
@@ -36,7 +36,7 @@ public abstract class AbstractJavaPerformSampler extends AbstractJavaSamplerClie
 	@Override
 	public Arguments getDefaultParameters() {
 		Map<String, String> args = getArguments();
-		if (CollectionUtil.isEmpty(args)) {
+		if (MapUtils.isEmpty(args)) {
 			return null;
 		}
 		Arguments arguments = new Arguments();

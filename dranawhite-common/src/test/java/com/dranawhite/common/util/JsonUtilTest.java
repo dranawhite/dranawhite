@@ -1,6 +1,8 @@
 package com.dranawhite.common.util;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.dranawhite.common.model.Address;
+import com.dranawhite.common.model.Person;
+
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
@@ -10,10 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author liangyuquan
@@ -95,27 +93,3 @@ public class JsonUtilTest {
 
 }
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-class Person {
-
-    private int id;
-
-    private String name;
-
-    private int age;
-
-    @JsonIgnore
-    private Address address;
-}
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-class Address {
-
-    private int id;
-
-    private String address;
-}
