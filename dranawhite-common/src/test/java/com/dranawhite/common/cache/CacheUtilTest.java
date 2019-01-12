@@ -27,13 +27,13 @@ public class CacheUtilTest {
         int num_1 = 0;
         int num_2 = 0;
 
-        System.out.println("GC Before: " + CacheUtils.borrowObject("02"));
+        System.out.println("GC Before: " + CacheUtils.getObject("02"));
 
         System.gc();
         ThreadUnit.sleep(5);
-        System.out.println("GC After: " + CacheUtils.borrowObject("02"));
+        System.out.println("GC After: " + CacheUtils.getObject("02"));
         CacheUtils.cacheObject("02", new Person(2, "jerry", 15, null));
-        System.out.println("After: " + CacheUtils.borrowObject("02"));
+        System.out.println("After: " + CacheUtils.getObject("02"));
     }
 
     @Test

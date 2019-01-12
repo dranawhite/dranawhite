@@ -3,6 +3,9 @@ package com.dranawhite.common.cache;
 import com.dranawhite.common.validate.ArgumentValidator;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
@@ -16,7 +19,7 @@ import java.util.WeakHashMap;
  */
 public final class CacheUtils {
 
-    private static WeakHashMap<String, WeakReference> map;
+    private static WeakHashMap<Object, WeakReference> map;
 
     static {
         map = new WeakHashMap<>(32);
@@ -25,13 +28,14 @@ public final class CacheUtils {
     /**
      * 缓存值
      *
-     * @param key 键
-     * @param obj 值
-     * @param <T> clz
+     * @param key   键
+     * @param value 值
+     * @param <K>   key
+     * @param <V>   value
      */
-    public static <T> void cacheObject(String key, T obj) {
-        ArgumentValidator.checkNotNull(key, obj);
-        WeakReference<T> reference = new WeakReference<>(obj);
+    public static <K, V> void cacheObject(K key, V value) {
+        ArgumentValidator.checkNotNull(key, value);
+        WeakReference<V> reference = new WeakReference<>(value);
         map.put(key, reference);
     }
 
@@ -39,16 +43,40 @@ public final class CacheUtils {
      * 从缓存中取值
      *
      * @param key 键
-     * @param <T> clz
-     * @return T
+     * @param <K> clz
+     * @return V
      */
-    public static <T> T borrowObject(String key) {
+    public static <K, V> V getObject(K key) {
         ArgumentValidator.checkNotNull(key);
         if (!map.containsKey(key)) {
             return null;
         }
-        WeakReference<T> reference = map.get(key);
+        WeakReference<V> reference = map.get(key);
         return reference.get();
     }
 
+    /**
+     * 从缓存中获取所有值
+     *
+     * @param <V> value
+     * @return list
+     */
+    public static <V> List<V> getAll() {
+        List<V> elementList = new ArrayList<>();
+        for (Map.Entry<Object, WeakReference> entry : map.entrySet()) {
+            WeakReference reference = entry.getValue();
+            V value = (V) reference.get();
+            if (value != null) {
+                elementList.add(value);
+            }
+        }
+        return elementList;
+    }
+
+    /**
+     * 清空缓存
+     */
+    public static void clear() {
+        map.clear();
+    }
 }
