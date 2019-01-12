@@ -11,6 +11,9 @@ import lombok.Setter;
 
 /**
  * 数据集
+ * <pre>
+ *     默认使用数组，当数据膨胀到100时，改用链表保存
+ * </pre>
  *
  * @author dranawhite
  * @version $Id: DataSet.java, v 0.1 2018-09-13 9:46 dranawhite Exp $$
