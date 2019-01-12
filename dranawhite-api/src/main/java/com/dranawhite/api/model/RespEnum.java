@@ -1,7 +1,9 @@
 package com.dranawhite.api.model;
 
-import com.dranawhite.common.util.StringUtil;
 import com.dranawhite.exception.IllegalArgDranawhiteException;
+
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.Getter;
 
 /**
@@ -28,7 +30,7 @@ public enum RespEnum {
 	}
 
 	public static RespEnum getRespEnumByCode(String code) {
-		if (StringUtil.isEmpty(code)) {
+		if (StringUtils.isEmpty(code)) {
 			throw new IllegalArgDranawhiteException("Code值：" + code);
 		}
 

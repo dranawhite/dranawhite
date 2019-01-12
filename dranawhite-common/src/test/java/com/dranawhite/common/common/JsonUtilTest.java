@@ -1,7 +1,8 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.common;
 
 import com.dranawhite.common.model.Address;
 import com.dranawhite.common.model.Person;
+import com.dranawhite.common.text.JsonUtil;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.type.TypeFactory;

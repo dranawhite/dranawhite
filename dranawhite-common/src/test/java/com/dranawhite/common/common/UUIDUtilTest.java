@@ -1,15 +1,13 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.common;
+
+import com.dranawhite.common.uuid.UUIDUtil;
 
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 

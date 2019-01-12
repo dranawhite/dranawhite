@@ -1,4 +1,4 @@
-package com.dranawhite.common.cache;
+package com.dranawhite.common.cache.scheduled;
 
 import java.util.List;
 

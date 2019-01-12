@@ -1,7 +1,7 @@
 package com.dranawhite.distributed.exception;
 
 import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.util.JsonUtil;
+import com.dranawhite.common.text.JsonUtil;
 import com.dranawhite.distributed.model.Response;
 import com.dranawhite.distributed.model.ResponseBuilder;
 

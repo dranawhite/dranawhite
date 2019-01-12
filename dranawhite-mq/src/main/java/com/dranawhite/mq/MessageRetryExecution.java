@@ -1,6 +1,6 @@
 package com.dranawhite.mq;
 
-import com.dranawhite.common.util.RetryUtil;
+import com.dranawhite.common.retry.RetryUtil;
 import lombok.Setter;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

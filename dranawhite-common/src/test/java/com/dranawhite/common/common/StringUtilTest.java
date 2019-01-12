@@ -1,4 +1,6 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.common;
+
+import com.dranawhite.common.text.StringUtil;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +13,7 @@ public class StringUtilTest {
 
 	@Test
 	public void testFillStr() {
-		String result = StringUtil.fillStr("123", 6);
+		String result = StringUtil.fillStringWithZero("123", 6);
 		Assert.assertEquals(result, "000123");
 	}
 

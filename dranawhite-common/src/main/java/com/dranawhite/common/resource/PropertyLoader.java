@@ -1,4 +1,4 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.resource;
 
 import com.dranawhite.exception.DranawhiteException;
 import com.dranawhite.exception.IllegalStateDranawhiteException;

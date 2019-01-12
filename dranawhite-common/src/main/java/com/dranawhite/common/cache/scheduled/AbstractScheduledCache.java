@@ -1,5 +1,6 @@
-package com.dranawhite.common.cache;
+package com.dranawhite.common.cache.scheduled;
 
+import com.dranawhite.common.cache.CacheUtils;
 import com.dranawhite.common.exception.ResultCodeEnum;
 import com.dranawhite.common.exception.business.DranaIllegalStateException;
 

@@ -1,4 +1,4 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.retry;
 
 import org.springframework.util.backoff.BackOffExecution;
 import org.springframework.util.backoff.ExponentialBackOff;

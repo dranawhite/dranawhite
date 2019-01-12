@@ -5,7 +5,7 @@ import com.google.common.base.Preconditions;
 import com.dranawhite.common.exception.ResultCodeEnum;
 import com.dranawhite.common.exception.request.DranaIllegalArgumentException;
 import com.dranawhite.common.text.MessageFormatter;
-import com.dranawhite.common.util.StringUtil;
+import com.dranawhite.common.text.StringUtil;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

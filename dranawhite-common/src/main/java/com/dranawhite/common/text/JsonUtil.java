@@ -1,4 +1,4 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.text;
 
 import com.dranawhite.common.exception.ResultCodeEnum;
 import com.dranawhite.common.exception.file.DranaJsonException;

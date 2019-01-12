@@ -1,4 +1,4 @@
-package com.dranawhite.common.util;
+package com.dranawhite.common.common;
 
 import org.apache.commons.lang3.StringUtils;
 

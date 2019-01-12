@@ -1,6 +1,6 @@
 package com.dranawhite.dal.mybatis;
 
-import com.dranawhite.common.util.ResourceLoader;
+import com.dranawhite.common.resource.ResourceLoader;
 
 /**
  * @author dranawhite

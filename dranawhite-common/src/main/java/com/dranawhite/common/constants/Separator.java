@@ -19,4 +19,5 @@ public final class Separator {
 	public static final String VERTICAL = "|";
 
 	public static final char CH_LEFT_BRACE = '{';
+	public static final char CH_SPACE = ' ';
 }

@@ -1,7 +1,9 @@
-
 package com.dranawhite.common.text;
 
 import com.dranawhite.common.constants.Separator;
+import com.dranawhite.common.validate.ArgumentValidator;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.text.MessageFormat;
 
@@ -24,6 +26,13 @@ public final class MessageFormatter {
      * @return string
      */
     public static String format(String msg, Object... args) {
+        if (StringUtils.isBlank(msg)) {
+            return StringUtils.EMPTY;
+        }
+        if (ArgumentValidator.assertNull(args)) {
+            return msg;
+        }
+
         int num = 0;
         char[] charArr = msg.toCharArray();
         StringBuilder sb = new StringBuilder();
