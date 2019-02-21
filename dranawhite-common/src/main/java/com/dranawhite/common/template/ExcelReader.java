@@ -19,8 +19,8 @@ import java.util.List;
 /**
  * Excel读取
  *
- * @author liangyuquan
- * @version $Id: ExcelReader.java, v 0.1 2018-12-19 20:37 liangyuquan Exp $$
+ * @author dranawhite
+ * @version $Id: ExcelReader.java, v 0.1 2018-12-19 20:37 dranawhite Exp $$
  */
 public final class ExcelReader {
 

@@ -6,8 +6,8 @@ import java.util.Date;
 
 /**
  *
- * @author liangyuquan
- * @version $Id: DateUtilTest.java, v 0.1 2019-01-12 14:02 liangyuquan Exp $$
+ * @author dranawhite
+ * @version $Id: DateUtilTest.java, v 0.1 2019-01-12 14:02 dranawhite Exp $$
  */
 public class DateUtilTest {
 

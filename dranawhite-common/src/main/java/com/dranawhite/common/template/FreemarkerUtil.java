@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Freemarker模板工具
  *
- * @author liangyuquan
+ * @author dranawhite
  * @version $Id: FreemarkerUtil.java, v 0.1 2018-12-19 11:22 dranawhite Exp $$
  */
 public final class FreemarkerUtil {
