@@ -20,4 +20,7 @@ public final class Separator {
 
 	public static final char CH_LEFT_BRACE = '{';
 	public static final char CH_SPACE = ' ';
+	public static final char CH_LEFT_BRACKET = '[';
+	public static final char CH_LEFT_PARENTHESES = '(';
+
 }
