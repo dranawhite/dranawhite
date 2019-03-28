@@ -1,6 +1,3 @@
-/**
- * ymm56.com Inc. Copyright (c) 2013-2019 All Rights Reserved.
- */
 package com.dranawhite.common.exception.service;
 
 import com.dranawhite.common.exception.DranaRuntimeException;
