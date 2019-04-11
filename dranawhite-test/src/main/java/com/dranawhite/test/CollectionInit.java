@@ -34,10 +34,9 @@ public class CollectionInit {
 	 * @param num  数据量
 	 */
 	public static void randomInitList(List<Integer> list, int num) {
+		Random random = new Random();
 		for (int i = 0; i < num; i++) {
-			Random random = new Random();
-			int data = random.nextInt(Integer.MAX_VALUE);
-			list.add(data);
+			list.add(random.nextInt(10000));
 		}
 	}
 }
