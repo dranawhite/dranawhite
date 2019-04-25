@@ -1,7 +1,9 @@
 package com.dranawhite.common.resource;
 
-import com.dranawhite.exception.DranawhiteException;
-import com.dranawhite.exception.IllegalStateDranawhiteException;
+
+import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.exception.file.DranaFileException;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -27,13 +29,13 @@ public final class PropertyLoader {
 			Resource resource = resolver.getResource(url);
 			prop = PropertiesLoaderUtils.loadProperties(resource);
 		} catch (IOException ioe) {
-			throw new DranawhiteException(ioe);
+			throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
 		}
 	}
 
 	public static String getProp(String key) {
 		if (prop == null) {
-			throw new IllegalStateDranawhiteException("未指定Properties文件！");
+			throw new DranaFileException("未指定Properties文件!", ResultCodeEnum.SERVICE_UNAVAILABLE);
 		}
 		return prop.getProperty(key);
 	}

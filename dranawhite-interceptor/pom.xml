@@ -32,7 +32,7 @@
         </dependency>
         <dependency>
             <groupId>com.dranawhite</groupId>
-            <artifactId>dranawhite-exception</artifactId>
+            <artifactId>dranawhite-common</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

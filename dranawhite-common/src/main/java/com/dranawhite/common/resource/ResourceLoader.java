@@ -1,6 +1,8 @@
 package com.dranawhite.common.resource;
 
-import com.dranawhite.exception.DranawhiteException;
+import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.exception.file.DranaFileException;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -24,7 +26,7 @@ public final class ResourceLoader {
 			Resource resource = resolver.getResource(file);
 			return resource.getURL().getPath();
 		} catch (IOException ioe) {
-			throw new DranawhiteException(ioe);
+			throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
 		}
 	}
 

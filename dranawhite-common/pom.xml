@@ -155,11 +155,5 @@
             <version>${poi.version}</version>
         </dependency>
 
-        <!-- Dranawhite Framework -->
-        <dependency>
-            <groupId>com.dranawhite</groupId>
-            <artifactId>dranawhite-exception</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>

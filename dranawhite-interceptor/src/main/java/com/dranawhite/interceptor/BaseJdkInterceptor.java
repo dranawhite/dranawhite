@@ -1,6 +1,7 @@
 package com.dranawhite.interceptor;
 
-import com.dranawhite.exception.DranawhiteException;
+import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -54,7 +55,7 @@ public class BaseJdkInterceptor<T> implements InvocationHandler {
 			tearDown();
 			return result;
 		} catch (Throwable t) {
-			throw new DranawhiteException("动态代理异常", t);
+			throw new DranaRuntimeException("动态代理异常", ResultCodeEnum.SERVICE_UNAVAILABLE, t);
 		}
 	}
 }

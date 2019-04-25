@@ -1,6 +1,7 @@
 package com.dranawhite.api.model;
 
-import com.dranawhite.exception.IllegalArgDranawhiteException;
+import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.exception.request.DranaIllegalArgumentException;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,7 +32,7 @@ public enum RespEnum {
 
 	public static RespEnum getRespEnumByCode(String code) {
 		if (StringUtils.isEmpty(code)) {
-			throw new IllegalArgDranawhiteException("Code值：" + code);
+			throw new DranaIllegalArgumentException("Code值：" + code, ResultCodeEnum.SERVICE_UNAVAILABLE);
 		}
 
 		RespEnum[] respEnumArr = RespEnum.values();
@@ -40,6 +41,6 @@ public enum RespEnum {
 				return respEnum;
 			}
 		}
-		throw new IllegalArgDranawhiteException("Code值：" + code);
+		throw new DranaIllegalArgumentException("Code值：" + code, ResultCodeEnum.SERVICE_UNAVAILABLE);
 	}
 }

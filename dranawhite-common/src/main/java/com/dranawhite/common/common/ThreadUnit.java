@@ -1,6 +1,7 @@
 package com.dranawhite.common.common;
 
-import com.dranawhite.exception.DranawhiteException;
+import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +16,7 @@ public final class ThreadUnit {
 		try {
 			TimeUnit.SECONDS.sleep(seconds);
 		} catch (InterruptedException ex) {
-			throw new DranawhiteException(ex);
+			throw new DranaRuntimeException("线程中断异常!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
 		}
 	}
 
@@ -23,7 +24,7 @@ public final class ThreadUnit {
 		try {
 			latch.await();
 		} catch (InterruptedException ex) {
-			throw new DranawhiteException(ex);
+			throw new DranaRuntimeException("线程中断异常!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
 		}
 	}
 
@@ -31,7 +32,7 @@ public final class ThreadUnit {
 		try {
 			obj.wait();
 		} catch (InterruptedException ex) {
-			throw new DranawhiteException(ex);
+			throw new DranaRuntimeException("线程中断异常!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
 		}
 	}
 }

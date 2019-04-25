@@ -1,6 +1,7 @@
 package com.dranawhite.common.common;
 
-import com.dranawhite.exception.DranawhiteException;
+import com.dranawhite.common.exception.DranaRuntimeException;
+import com.dranawhite.common.exception.ResultCodeEnum;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -19,7 +20,7 @@ public final class InetAddressUtil {
 		try {
 			return InetAddress.getLocalHost();
 		} catch (UnknownHostException he) {
-			throw new DranawhiteException(he);
+			throw new DranaRuntimeException("获取IP地址异常!", ResultCodeEnum.SERVICE_UNAVAILABLE, he);
 		}
 	}
 
@@ -47,7 +48,7 @@ public final class InetAddressUtil {
 			}
 			return sb.toString().substring(0, sb.length() - 1).toUpperCase();
 		} catch (SocketException se) {
-			throw new DranawhiteException(se);
+			throw new DranaRuntimeException("获取MAC地址错误!", ResultCodeEnum.SERVICE_UNAVAILABLE, se);
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.dranawhite.api.model;
 
-import com.dranawhite.exception.IllegalArgDranawhiteException;
+import com.dranawhite.common.exception.request.DranaIllegalArgumentException;
+
 import org.junit.Test;
 
 /**
@@ -9,7 +10,7 @@ import org.junit.Test;
  */
 public class EnumTest {
 
-	@Test(expected = IllegalArgDranawhiteException.class)
+	@Test(expected = DranaIllegalArgumentException.class)
 	public void testGetEnumByCode_Empty() {
 		RespEnum.getRespEnumByCode("");
 	}
