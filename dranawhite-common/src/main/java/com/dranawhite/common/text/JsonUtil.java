@@ -3,6 +3,7 @@ package com.dranawhite.common.text;
 import com.dranawhite.common.exception.ResultCodeEnum;
 import com.dranawhite.common.exception.file.DranaJsonException;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +22,10 @@ import java.util.Map;
 public final class JsonUtil {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
+
+    static {
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+    }
 
     /**
      * 解析JSON

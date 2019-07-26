@@ -160,6 +160,17 @@ public final class DateUtil {
     }
 
     /**
+     * 获取该月的最后一天
+     *
+     * @param month 月份
+     * @return date
+     */
+    public static Date lastDayAtMonth(int month) {
+        DateTime lastDayOfMonth = DateTime.now().withMonthOfYear(month).dayOfMonth().withMaximumValue();
+        return lastDayOfMonth.toDate();
+    }
+
+    /**
      * 获取几个月前的日期
      *
      * @param month 月数
