@@ -8,6 +8,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author dranawhite
@@ -15,19 +16,32 @@ import java.io.IOException;
  */
 public final class ResourceLoader {
 
-	private static final ResourcePatternResolver resolver;
+    private static final ResourcePatternResolver resolver;
 
-	static {
-		resolver = new PathMatchingResourcePatternResolver();
-	}
+    static {
+        resolver = new PathMatchingResourcePatternResolver();
+    }
 
-	public static String getClasspathResource(String file) {
-		try {
-			Resource resource = resolver.getResource(file);
-			return resource.getURL().getPath();
-		} catch (IOException ioe) {
-			throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
-		}
-	}
+    public static String getClasspathResource(String file) {
+        try {
+            Resource resource = resolver.getResource(file);
+            return resource.getURL().getPath();
+        } catch (IOException ioe) {
+            throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
+        }
+    }
+
+    public static Resource getResource(String file) {
+        return resolver.getResource(file);
+    }
+
+    public static InputStream getInputStream(String file) {
+        try {
+            Resource resource = resolver.getResource(file);
+            return resource.getInputStream();
+        } catch (IOException ioe) {
+            throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
+        }
+    }
 
 }
