@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class DranaRequest<T extends BaseData> extends BaseRequest {
+public class DranaRequest<T> extends BaseRequest {
 
     private T data;
 

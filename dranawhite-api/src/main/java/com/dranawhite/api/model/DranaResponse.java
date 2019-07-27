@@ -8,7 +8,7 @@ import lombok.Getter;
  * @author dranawhite
  * @version : DranaResponse.java, v 0.1 2019-07-26 14:00 dranawhite Exp $$
  */
-public class DranaResponse<T extends BaseData> extends BaseResponse {
+public class DranaResponse<T> extends BaseResponse {
 
     @Getter
     private int code;
@@ -18,9 +18,10 @@ public class DranaResponse<T extends BaseData> extends BaseResponse {
 
     private boolean success;
 
+    @Getter
     private T body;
 
-    public static <T extends BaseData> DranaResponse<T> success(T body) {
+    public static <T> DranaResponse<T> success(T body) {
         return new DranaResponse(0, "SUCCESS", true, body);
     }
 
