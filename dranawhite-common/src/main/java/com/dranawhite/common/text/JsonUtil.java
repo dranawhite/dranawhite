@@ -24,7 +24,7 @@ public final class JsonUtil {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     static {
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
     /**
