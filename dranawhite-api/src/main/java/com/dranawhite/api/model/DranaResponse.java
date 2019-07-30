@@ -29,6 +29,10 @@ public class DranaResponse<T> extends BaseResponse {
         return new DranaResponse(resultCodeEnum.getCode(), resultCodeEnum.getDesc(), false, null);
     }
 
+    public static DranaResponse fail(int code, String desc) {
+        return new DranaResponse(code, desc, false, null);
+    }
+
     private DranaResponse(int code, String errMsg, boolean success, T body) {
         this.code = code;
         this.errMsg = errMsg;
