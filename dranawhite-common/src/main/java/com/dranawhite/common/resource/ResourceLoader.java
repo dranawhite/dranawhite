@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -33,6 +34,15 @@ public final class ResourceLoader {
 
     public static Resource getResource(String file) {
         return resolver.getResource(file);
+    }
+
+    public static File getClasspathFile(String file) {
+        try {
+            Resource resource = resolver.getResource(file);
+            return resource.getFile();
+        } catch (IOException ioe) {
+            throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
+        }
     }
 
     public static InputStream getInputStream(String file) {
