@@ -125,6 +125,7 @@
                     <include>**/*.html</include>
                     <include>**/*.pdf</include>
                     <include>META-INF/services/*</include>
+                    <include>META-INF/*</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
