@@ -6,6 +6,8 @@ package com.dranawhite.common.exception;
  */
 public enum GenericResultCode implements IResultCode {
 
+    SUCCESS(0, "成功"),
+
     /**
      * SYSTEM_ERROR
      */

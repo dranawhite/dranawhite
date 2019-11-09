@@ -1,6 +1,6 @@
 package com.dranawhite.test.jmeter.java;
 
-import com.dranawhite.api.model.Result;
+import com.dranawhite.common.model.Result;
 import com.dranawhite.test.jmeter.SampleResultBuilder;
 
 import org.apache.commons.collections.MapUtils;

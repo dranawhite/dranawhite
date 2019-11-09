@@ -1,11 +1,13 @@
 package com.dranawhite.test.jmeter;
 
-import com.dranawhite.api.model.RespEnum;
-import com.dranawhite.api.model.Result;
+import com.dranawhite.common.exception.GenericResultCode;
+import com.dranawhite.common.model.Result;
 import com.dranawhite.common.text.JsonUtil;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.jmeter.samplers.SampleResult;
+
+import java.nio.charset.StandardCharsets;
+
 
 /**
  * @author dranawhite
@@ -13,23 +15,23 @@ import org.apache.jmeter.samplers.SampleResult;
  */
 public final class SampleResultBuilder {
 
-	public static SampleResult buildResult(Result<?> result) {
-		SampleResult sampleResult = new SampleResult();
-		sampleResult.setDataType(SampleResult.TEXT);
-		sampleResult.setThreadName("JMeter请求");
-		if (result == null) {
-			sampleResult.setSuccessful(Boolean.FALSE);
-		} else if (StringUtils.equals(RespEnum.SUCCESS.getCode(), result.getRespCode())) {
-			sampleResult.setResponseCode(result.getRespCode());
-			sampleResult.setResponseData(JsonUtil.toJsonString(result.getData()), "UTF-8");
-			sampleResult.setSuccessful(Boolean.TRUE);
-			sampleResult.setResponseMessageOK();
-			sampleResult.setResponseMessage(result.getRespDesc());
-		} else {
-			sampleResult.setResponseCode(result.getRespCode());
-			sampleResult.setResponseMessage(result.getRespDesc());
-			sampleResult.setSuccessful(Boolean.FALSE);
-		}
-		return sampleResult;
-	}
+    public static SampleResult buildResult(Result<?> result) {
+        SampleResult sampleResult = new SampleResult();
+        sampleResult.setDataType(SampleResult.TEXT);
+        sampleResult.setThreadName("JMeter请求");
+        if (result == null) {
+            sampleResult.setSuccessful(Boolean.FALSE);
+        } else if (GenericResultCode.SUCCESS.getCode() == result.getCode()) {
+            sampleResult.setResponseCode(String.valueOf(result.getCode()));
+            sampleResult.setResponseData(JsonUtil.toJsonString(result.getData()), StandardCharsets.UTF_8.name());
+            sampleResult.setSuccessful(Boolean.TRUE);
+            sampleResult.setResponseMessageOK();
+            sampleResult.setResponseMessage(result.getDesc());
+        } else {
+            sampleResult.setResponseCode(String.valueOf(result.getCode()));
+            sampleResult.setResponseMessage(result.getDesc());
+            sampleResult.setSuccessful(Boolean.FALSE);
+        }
+        return sampleResult;
+    }
 }
