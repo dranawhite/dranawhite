@@ -40,7 +40,7 @@
         <lombok.version>1.16.20</lombok.version>
         <orika.version>1.5.2</orika.version>
         <!-- Spring  -->
-        <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
+        <spring-boot.version>1.5.11.RELEASE</spring-boot.version>
         <junit.version>4.12</junit.version>
 
         <!-- Maven远程发布 -->
