@@ -1,6 +1,6 @@
 package com.dranawhite.common.cache;
 
-import com.dranawhite.common.validate.ArgumentValidator;
+import com.dranawhite.common.validation.ArgumentValidator;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

@@ -1,13 +1,13 @@
 package com.dranawhite.interceptor;
 
-import com.dranawhite.common.exception.DranaRuntimeException;
-import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
+
+import lombok.extern.slf4j.Slf4j;
 
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 方法调用计时器
@@ -39,7 +39,7 @@ public class InvokeTimeInterceptor extends BaseCglibInterceptor {
 			log.info("耗时：" + time);
 			return result;
 		} catch(Throwable t) {
-			throw new DranaRuntimeException("计时器异常！", ResultCodeEnum.SERVICE_UNAVAILABLE, t);
+			throw new DranaSystemException("计时器异常！", GenericResultCode.SYSTEM_ERROR, t);
 		}
 	}
 }

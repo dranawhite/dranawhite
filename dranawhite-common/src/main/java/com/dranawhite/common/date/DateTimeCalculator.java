@@ -1,10 +1,9 @@
 package com.dranawhite.common.date;
 
 import com.dranawhite.common.constants.Separator;
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaParserException;
-import com.dranawhite.common.exception.request.DranaIllegalArgumentException;
-import com.dranawhite.common.exception.request.DranaRequestException;
+import com.dranawhite.common.exception.DranaArgumentException;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
 import com.dranawhite.common.text.StringUtil;
 
 import org.apache.commons.lang3.StringUtils;
@@ -44,12 +43,15 @@ public final class DateTimeCalculator {
             }
             return calculator.toFormattedDate(format);
         } catch (Exception ex) {
-            throw new DranaParserException("解析日期失败", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaSystemException("解析日期失败", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
     enum DateTimeKeyEnum {
 
+        /**
+         * DateTimeKeyEnum
+         */
         DAY("DAY"),
         WEEK("WEEK"),
         MONTH("MONTH"),
@@ -79,7 +81,7 @@ public final class DateTimeCalculator {
                     return dateTimeKeyEnum;
                 }
             }
-            throw new DranaIllegalArgumentException("无效的枚举值[{}]", ResultCodeEnum.ILLEGAL_REQUEST, key);
+            throw new DranaSystemException("无效的枚举值[{}]", GenericResultCode.SYSTEM_ERROR, key);
         }
 
         public static Set<String> keySet() {
@@ -216,9 +218,9 @@ public final class DateTimeCalculator {
      */
     private static boolean validateExpression(final String expression) {
         if (StringUtils.isBlank(expression)) {
-            throw new DranaRequestException("表达式不能为空", ResultCodeEnum.ILLEGAL_REQUEST);
+            throw new DranaArgumentException("表达式不能为空", GenericResultCode.ARGUMENT_ERROR);
         }
-        String[] wordArr = StringUtils.split(expression, Separator.POINT);
+        String[] wordArr = StringUtils.split(expression, Separator.StringSeparator.POINT);
         expressionList = new ArrayList<>(wordArr.length);
         String keyWord;
         for (String word : wordArr) {
@@ -226,18 +228,18 @@ public final class DateTimeCalculator {
             char[] keyWordChArr = new char[20];
             int index = 0;
             for (int i = 0, len = wordChArr.length; i < len; i++) {
-                if (wordChArr[i] == Separator.CH_LEFT_PARENTHESES) {
+                if (wordChArr[i] == Separator.CharacterSeparator.LEFT_PARENTHESES) {
                     break;
                 }
                 keyWordChArr[index++] = wordChArr[i];
             }
             keyWord = new String(keyWordChArr, 0, index);
             if (!DateTimeKeyEnum.keySet().contains(keyWord)) {
-                throw new DranaRequestException("表达式错误，未识别的关键字[{}]", ResultCodeEnum.ILLEGAL_REQUEST, keyWord);
+                throw new DranaSystemException("表达式错误，未识别的关键字[{}]", GenericResultCode.SYSTEM_ERROR, keyWord);
             }
             String wordParam = new String(wordChArr, index + 1, wordChArr.length - index - 2);
             if (!StringUtil.isMatch(wordParam, "(-?\\d)+")) {
-                throw new DranaRequestException("表达式错误，参数应该是整数[{}]", ResultCodeEnum.ILLEGAL_REQUEST, wordParam);
+                throw new DranaSystemException("表达式错误，参数应该是整数[{}]", GenericResultCode.SYSTEM_ERROR, wordParam);
             }
             Expression expressionObj = new Expression(transferToMethodName(keyWord), Integer.parseInt(wordParam));
             expressionList.add(expressionObj);

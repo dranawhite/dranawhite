@@ -2,8 +2,8 @@ package com.dranawhite.common.template;
 
 import com.dranawhite.common.constants.Separator;
 import com.dranawhite.common.date.DateUtil;
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaExcelException;
+import com.dranawhite.common.exception.DranaFileException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -46,7 +46,7 @@ public final class ExcelGenerator {
     public static String generateExcel(List<String> titleList, DataSet<Object> resultSet, String fileName) {
         List<DataRow<Object>> rowList = resultSet.getValueList();
         if (CollectionUtils.isEmpty(titleList)) {
-            throw new DranaExcelException("Excel表头不能为空!", ResultCodeEnum.TEMPLATE_ILLEGAL_TITLE);
+            throw new DranaFileException("Excel表头不能为空!", GenericResultCode.SYSTEM_ERROR);
         }
 
         // 创建文件目录
@@ -55,7 +55,7 @@ public final class ExcelGenerator {
                 .append(DateUtil.format(new Date(), DateUtil.DateFormat.SERIAL_DAY));
         createDirectoryIfNotExists(dirSb.toString());
         StringBuilder pathSb = new StringBuilder(dirSb);
-        pathSb.append(File.separator).append(fileName).append(Separator.UNDERLINE)
+        pathSb.append(File.separator).append(fileName).append(Separator.StringSeparator.UNDER_LINE)
                 .append(DateUtil.formatSerialSecond(new Date())).append(EXCEL_SUFFIX);
 
         // 生成表头
@@ -67,7 +67,7 @@ public final class ExcelGenerator {
             generateExcelData(sheet, rowList);
             saveExcel(workbook, pathSb.toString());
         } catch (Exception ex) {
-            throw new DranaExcelException("生成Excel文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaFileException("生成Excel文件失败!", GenericResultCode.SYSTEM_ERROR, ex);
         } finally {
             if (workbook != null) {
                 workbook.dispose();
@@ -87,7 +87,7 @@ public final class ExcelGenerator {
             return;
         }
         if (!workDirectory.mkdirs()) {
-            throw new DranaExcelException("创建目录失败!", ResultCodeEnum.SERVICE_UNAVAILABLE);
+            throw new DranaFileException("创建目录失败!", GenericResultCode.SYSTEM_ERROR);
         }
         workDirectory.setWritable(true, false);
         workDirectory.setExecutable(true, false);
@@ -102,7 +102,7 @@ public final class ExcelGenerator {
         try (FileOutputStream outs = new FileOutputStream(fileName)) {
             workbook.write(outs);
         } catch (IOException ex) {
-            throw new DranaExcelException("创建Excel失败, PATH = [{}]", ResultCodeEnum.SERVICE_UNAVAILABLE, fileName);
+            throw new DranaFileException("创建Excel失败, PATH = [{}]", GenericResultCode.SYSTEM_ERROR, fileName);
         }
     }
 

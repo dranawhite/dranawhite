@@ -1,7 +1,7 @@
 package com.dranawhite.common.text;
 
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaParserException;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -24,7 +24,7 @@ public final class StringEncoder {
         try {
             return URLDecoder.decode(str, StandardCharsets.UTF_8.name());
         } catch (Exception ex) {
-            throw new DranaParserException("字符串解码失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaSystemException("字符串解码失败!", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 

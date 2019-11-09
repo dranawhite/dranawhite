@@ -1,40 +1,50 @@
+
 package com.dranawhite.common.exception;
 
 import com.dranawhite.common.text.MessageFormatter;
 
-import org.springframework.core.NestedRuntimeException;
-
 import lombok.Getter;
 
+import org.springframework.core.NestedRuntimeException;
+
 /**
- * 运行时异常
+ * BI运行时异常
  *
  * @author dranawhite
- * @version $Id: DranaRuntimeException.java, v 0.1 2018-09-08 11:09 dranawhite Exp $$
+ * @version : BiRuntimeException.java, v 0.1 2019-08-24 10:07 dranawhite Exp $$
  */
-public class DranaRuntimeException extends NestedRuntimeException {
+public abstract class DranaRuntimeException extends NestedRuntimeException {
+
+    private static final long serialVersionUID = -618998708189866962L;
 
     @Getter
-    protected ResultCodeEnum resultCodeEnum;
+    private IResultCode resultCode;
 
-    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum) {
-        super(message);
-        this.resultCodeEnum = resultCodeEnum;
+    public DranaRuntimeException(String msg, IResultCode resultCode) {
+        super(msg);
+        this.resultCode = resultCode;
     }
 
-    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Object... args) {
-        super(MessageFormatter.format(message, args));
-        this.resultCodeEnum = resultCodeEnum;
+    public DranaRuntimeException(String msg, IResultCode resultCode, Object... args) {
+        super(MessageFormatter.format(msg, args));
+        this.resultCode = resultCode;
     }
 
-    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Throwable tr) {
-        super(message, tr);
-        this.resultCodeEnum = resultCodeEnum;
+    public DranaRuntimeException(String msg, IResultCode resultCode, Throwable cause) {
+        super(msg, cause);
+        this.resultCode = resultCode;
     }
 
-    public DranaRuntimeException(String message, ResultCodeEnum resultCodeEnum, Throwable tr, Object... args) {
-        super(MessageFormatter.format(message, args), tr);
-        this.resultCodeEnum = resultCodeEnum;
+    public DranaRuntimeException(String msg, IResultCode resultCode, Throwable cause, Object... args) {
+        super(MessageFormatter.format(msg, args), cause);
+        this.resultCode = resultCode;
     }
 
+    public int getCode() {
+        return resultCode.getCode();
+    }
+
+    public String getDesc() {
+        return resultCode.getDesc();
+    }
 }

@@ -92,7 +92,7 @@ public final class StringUtil {
         char[] paramArr = str.toCharArray();
         StringBuilder paramSb = new StringBuilder();
         for (char param : paramArr) {
-            if (param == Separator.CH_SPACE) {
+            if (param == Separator.CharacterSeparator.SPACE) {
                 continue;
             }
             paramSb.append(param);

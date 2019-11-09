@@ -74,7 +74,7 @@ public final class UUIDUtil {
      * @return UUID
      */
     public static String getRandomUUID() {
-        return UUID.randomUUID().toString().replace(Separator.MIDDLELINE, "");
+        return UUID.randomUUID().toString().replace(Separator.StringSeparator.MIDDLE_LINE, "");
     }
 
     /**
@@ -104,7 +104,7 @@ public final class UUIDUtil {
                     return address;
                 }
                 String mac = InetAddressUtil.getMacAddress();
-                String macStr = mac.replace(Separator.MIDDLELINE, "");
+                String macStr = mac.replace(Separator.StringSeparator.MIDDLE_LINE, "");
                 char[] chs = macStr.toCharArray();
                 for (int i = 0, len = chs.length; i < len; i++) {
                     chs[i] = (char) (chs[i] - i);

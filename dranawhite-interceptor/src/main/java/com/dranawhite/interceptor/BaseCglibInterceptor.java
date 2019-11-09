@@ -1,7 +1,7 @@
 package com.dranawhite.interceptor;
 
-import com.dranawhite.common.exception.DranaRuntimeException;
-import com.dranawhite.common.exception.ResultCodeEnum;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -48,7 +48,7 @@ public class BaseCglibInterceptor implements MethodInterceptor {
 			tearDown();
 			return result;
 		} catch (Throwable t) {
-			throw new DranaRuntimeException("动态代理异常！", ResultCodeEnum.SERVICE_UNAVAILABLE, t);
+			throw new DranaSystemException("动态代理异常！", GenericResultCode.SYSTEM_ERROR, t);
 		}
 	}
 }

@@ -1,8 +1,11 @@
 package com.dranawhite.common.cache.scheduled;
 
 import com.dranawhite.common.cache.CacheUtils;
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.business.DranaIllegalStateException;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -13,9 +16,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * 定时重刷缓存
@@ -68,11 +68,11 @@ public abstract class AbstractScheduledCache<K, V> implements IScheduledCache<K,
     public void afterPropertiesSet() {
         refresh();
         executorService = new ScheduledThreadPoolExecutor(1, (Runnable r) -> {
-                Thread thread = new Thread(r);
-                thread.setDaemon(true);
-                thread.setName("ScheduledCache-" + serialNumber.incrementAndGet());
-                return thread;
-            });
+            Thread thread = new Thread(r);
+            thread.setDaemon(true);
+            thread.setName("ScheduledCache-" + serialNumber.incrementAndGet());
+            return thread;
+        });
         executorService.scheduleAtFixedRate(task, delaySeconds, periodSeconds, TimeUnit.SECONDS);
     }
 
@@ -87,7 +87,7 @@ public abstract class AbstractScheduledCache<K, V> implements IScheduledCache<K,
         @Override
         public void run() {
             if (!refresh()) {
-                throw new DranaIllegalStateException("刷新缓存失败", ResultCodeEnum.SERVICE_UNAVAILABLE);
+                throw new DranaSystemException("刷新缓存失败", GenericResultCode.SYSTEM_ERROR);
             }
         }
     }

@@ -1,7 +1,8 @@
 package com.dranawhite.common.template;
 
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaExcelException;
+import com.dranawhite.common.exception.DranaArgumentException;
+import com.dranawhite.common.exception.DranaFileException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -71,26 +72,26 @@ public final class ExcelReader {
             }
             return resultSet;
         } catch (IOException ex) {
-            throw new DranaExcelException("读取Excel模板错误", ResultCodeEnum.TEMPLATE_ERR, ex);
+            throw new DranaFileException("读取Excel模板错误", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
     private static void validateExcelTpl(Sheet sheet, String[] tplTitleArr) {
         if (sheet == null) {
-            throw new DranaExcelException("Excel模板错误, 找不到Sheet页", ResultCodeEnum.TEMPLATE_EXCEL_SHEET_LACK);
+            throw new DranaArgumentException("Excel模板错误, 找不到Sheet页", GenericResultCode.ARGUMENT_ERROR);
         }
 
         int firstRowNum = sheet.getFirstRowNum();
         int lastRowNum = sheet.getLastRowNum();
         if (lastRowNum < 1) {
-            throw new DranaExcelException("Excel模板错误, 数据为空", ResultCodeEnum.TEMPLATE_DATA_LACK);
+            throw new DranaFileException("Excel模板错误, 数据为空", GenericResultCode.SYSTEM_ERROR);
         }
 
         Row row = sheet.getRow(firstRowNum);
         int expectColNum = tplTitleArr.length;
         int actualColNum = row.getLastCellNum();
         if (actualColNum != expectColNum) {
-            throw new DranaExcelException("Excel模板错误, 数据列数不对应", ResultCodeEnum.TEMPLATE_ILLEGAL_FORMAT);
+            throw new DranaFileException("Excel模板错误, 数据列数不对应", GenericResultCode.SYSTEM_ERROR);
         }
 
         for (int colNum = 0; colNum < expectColNum; colNum++) {
@@ -100,7 +101,7 @@ public final class ExcelReader {
                 if (titleText.equals(tplTitleArr[index])) {
                     break;
                 } else if (index == expectColNum - 1) {
-                    throw new DranaExcelException("Excel模板错误, 标题不对应", ResultCodeEnum.TEMPLATE_ILLEGAL_TITLE);
+                    throw new DranaFileException("Excel模板错误, 标题不对应", GenericResultCode.SYSTEM_ERROR);
                 }
             }
         }

@@ -1,8 +1,8 @@
 package com.dranawhite.common.resource;
 
 
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaFileException;
+import com.dranawhite.common.exception.DranaFileException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -21,22 +21,22 @@ import java.util.Properties;
  */
 public final class PropertyLoader {
 
-	private static Properties prop;
+    private static Properties prop;
 
-	public static void load(String url) {
-		try {
-			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-			Resource resource = resolver.getResource(url);
-			prop = PropertiesLoaderUtils.loadProperties(resource);
-		} catch (IOException ioe) {
-			throw new DranaFileException("加载资源文件失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ioe);
-		}
-	}
+    public static void load(String url) {
+        try {
+            ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+            Resource resource = resolver.getResource(url);
+            prop = PropertiesLoaderUtils.loadProperties(resource);
+        } catch (IOException ioe) {
+            throw new DranaFileException("加载资源文件失败!", GenericResultCode.SYSTEM_ERROR, ioe);
+        }
+    }
 
-	public static String getProp(String key) {
-		if (prop == null) {
-			throw new DranaFileException("未指定Properties文件!", ResultCodeEnum.SERVICE_UNAVAILABLE);
-		}
-		return prop.getProperty(key);
-	}
+    public static String getProp(String key) {
+        if (prop == null) {
+            throw new DranaFileException("未指定Properties文件!", GenericResultCode.SYSTEM_ERROR);
+        }
+        return prop.getProperty(key);
+    }
 }

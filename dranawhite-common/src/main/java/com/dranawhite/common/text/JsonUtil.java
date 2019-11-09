@@ -1,7 +1,7 @@
 package com.dranawhite.common.text;
 
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaJsonException;
+import com.dranawhite.common.exception.DranaTextException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -39,7 +39,7 @@ public final class JsonUtil {
         try {
             return objectMapper.readValue(json, javaType);
         } catch (IOException ex) {
-            throw new DranaJsonException("解析JSON失败", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("解析JSON失败", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -55,7 +55,7 @@ public final class JsonUtil {
         try {
             return objectMapper.readValue(json, clz);
         } catch (IOException ex) {
-            throw new DranaJsonException("解析JSON失败", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("解析JSON失败", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -74,7 +74,7 @@ public final class JsonUtil {
             JavaType javaType = typeFactory.constructCollectionType(collClz, elemClz);
             return objectMapper.readValue(json, javaType);
         } catch (IOException ex) {
-            throw new DranaJsonException("解析JSON失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("解析JSON失败!", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -92,7 +92,7 @@ public final class JsonUtil {
             JavaType javaType = typeFactory.constructArrayType(elemClz);
             return objectMapper.readValue(json, javaType);
         } catch (IOException ex) {
-            throw new DranaJsonException("解析JSON失败", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("解析JSON失败", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -116,7 +116,7 @@ public final class JsonUtil {
             JavaType javaType = typeFactory.constructMapType(mapClz, keyClz, valueClz);
             return objectMapper.readValue(json, javaType);
         } catch (IOException ex) {
-            throw new DranaJsonException("解析JSON失败", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("解析JSON失败", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -131,7 +131,7 @@ public final class JsonUtil {
         try {
             return objectMapper.writeValueAsString(obj);
         } catch (JsonProcessingException ex) {
-            throw new DranaJsonException("生成JSON失败!", ResultCodeEnum.SERVICE_UNAVAILABLE, ex);
+            throw new DranaTextException("生成JSON失败!", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.dranawhite.common.date;
 
 import com.dranawhite.common.text.StringUtil;
-import com.dranawhite.common.validate.ArgumentValidator;
+import com.dranawhite.common.validation.ArgumentValidator;
 
 import org.joda.time.DateTime;
 import org.springframework.format.datetime.DateFormatter;

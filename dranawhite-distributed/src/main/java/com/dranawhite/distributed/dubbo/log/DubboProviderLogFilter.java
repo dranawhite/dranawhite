@@ -32,7 +32,7 @@ public class DubboProviderLogFilter extends DubboLogFilter {
 		Object[] objs = invocation.getArguments();
 		StringBuilder sb = new StringBuilder();
 		for (Object obj : objs) {
-			sb.append(obj).append(Separator.VERTICAL);
+			sb.append(obj).append(Separator.StringSeparator.VERTICAL);
 		}
 		String args = sb.toString().substring(0, sb.length() - 1);
 

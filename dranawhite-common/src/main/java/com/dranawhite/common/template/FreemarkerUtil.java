@@ -1,7 +1,7 @@
 package com.dranawhite.common.template;
 
-import com.dranawhite.common.exception.ResultCodeEnum;
-import com.dranawhite.common.exception.file.DranaParserException;
+import com.dranawhite.common.exception.DranaSystemException;
+import com.dranawhite.common.exception.GenericResultCode;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -38,7 +38,7 @@ public final class FreemarkerUtil {
             Template tpl = configuration.getTemplate(tplPath, Locale.CHINESE, StandardCharsets.UTF_8.name());
             return FreeMarkerTemplateUtils.processTemplateIntoString(tpl, modelMap);
         } catch (Exception ex) {
-            throw new DranaParserException("解析Freemarker模板失败!", ResultCodeEnum.TEMPLATE_ERR, ex);
+            throw new DranaSystemException("解析Freemarker模板失败!", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 
@@ -56,7 +56,7 @@ public final class FreemarkerUtil {
                 configuration.setTemplateLoader(new SpringTemplateLoader(resolver, "/"));
             }
         } catch (Exception ex) {
-            throw new DranaParserException("初始化Freemarker模板失败!", ResultCodeEnum.TEMPLATE_ERR, ex);
+            throw new DranaSystemException("初始化Freemarker模板失败!", GenericResultCode.SYSTEM_ERROR, ex);
         }
     }
 }

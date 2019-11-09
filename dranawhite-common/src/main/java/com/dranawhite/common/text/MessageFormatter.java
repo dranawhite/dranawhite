@@ -1,7 +1,7 @@
 package com.dranawhite.common.text;
 
 import com.dranawhite.common.constants.Separator;
-import com.dranawhite.common.validate.ArgumentValidator;
+import com.dranawhite.common.validation.ArgumentValidator;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -38,7 +38,7 @@ public final class MessageFormatter {
         StringBuilder sb = new StringBuilder();
         for (char ch : charArr) {
             sb.append(ch);
-            if (ch == Separator.CH_LEFT_BRACE) {
+            if (ch == Separator.CharacterSeparator.LEFT_BRACE) {
                 sb.append(num++);
             }
         }

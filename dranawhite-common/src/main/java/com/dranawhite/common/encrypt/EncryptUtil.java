@@ -1,7 +1,7 @@
 package com.dranawhite.common.encrypt;
 
 import com.dranawhite.common.date.DateUtil;
-import com.dranawhite.common.validate.ArgumentValidator;
+import com.dranawhite.common.validation.ArgumentValidator;
 
 import org.apache.commons.codec.digest.Md5Crypt;
 

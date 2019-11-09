@@ -14,7 +14,6 @@
     <url>http://www.dranawhite.com</url>
 
     <modules>
-        <module>dranawhite-api</module>
         <module>dranawhite-common</module>
         <module>dranawhite-log</module>
         <module>dranawhite-config</module>
