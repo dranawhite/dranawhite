@@ -13,7 +13,7 @@
     <description>消息服务模块</description>
 
     <properties>
-        <spring-mq.version>2.0.2.RELEASE</spring-mq.version>
+        <spring-mq.version>2.2.1.RELEASE</spring-mq.version>
     </properties>
 
     <dependencies>
