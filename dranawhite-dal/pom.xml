@@ -24,7 +24,7 @@
         <!-- ORM -->
         <!-- 1.3.1版本，适用于MyBatis 3.4.0+; Spring 3.0.0+ -->
         <mybatis-spring.version>1.3.1</mybatis-spring.version>
-        <mybatis.version>3.4.5</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
     </properties>
 
     <dependencies>
