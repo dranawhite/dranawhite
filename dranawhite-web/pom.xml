@@ -18,7 +18,7 @@
         <servlet.version>3.1.0</servlet.version>
         <jsp.version>2.3.1</jsp.version>
         <jstl.version>1.2</jstl.version>
-        <fastjson.version>1.2.28</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencies>
