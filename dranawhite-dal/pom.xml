@@ -18,7 +18,7 @@
         <!-- Database -->
         <!-- 8.0版本，适用于MySql 5.5,5.6,5.7,8.0; JDK 1.8+; JDBC 4.2 -->
         <mysql.version>5.1.46</mysql.version>
-        <derby.version>10.13.1.1</derby.version>
+        <derby.version>10.14.2.0</derby.version>
         <oracle.version>6</oracle.version>
         <druid.version>1.1.6</druid.version>
         <!-- ORM -->
